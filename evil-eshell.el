@@ -48,8 +48,6 @@
 ;;; `eshell-mode-map' is reset when Eshell is initialized in `eshell-mode'. We
 ;;; need to add bindings to `eshell-first-time-mode-hook'.
 (defun evil-eshell-set-keys ()
-  (with-eval-after-load 'init-helm
-    (evil-define-key 'insert eshell-mode-map "\C-e" 'helm-find-files))
   (evil-define-key 'normal eshell-mode-map
     "[" 'eshell-previous-prompt
     "]" 'eshell-next-prompt

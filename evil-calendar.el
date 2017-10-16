@@ -48,7 +48,7 @@
   "a" 'calendar-list-holidays
   "c" 'org-calendar-goto-agenda
   "d" 'diary-view-entries
-  ("M-h") 'calendar-cursor-holidays
+  (kbd "M-h") 'calendar-cursor-holidays
   "m" 'diary-mark-entries
   "o" 'calendar-other-month
   "q" 'calendar-exit
