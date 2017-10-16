@@ -37,6 +37,8 @@
   "gm" 'man
   (kbd "C-j") 'Man-next-section
   (kbd "C-k") 'Man-previous-section
+  (kbd "]") 'Man-next-section
+  (kbd "[") 'Man-previous-section
   "gr" 'Man-follow-manual-reference
   "gs" 'Man-goto-see-also-section
   "u" 'Man-update-manpage

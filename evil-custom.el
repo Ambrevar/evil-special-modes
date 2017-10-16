@@ -42,6 +42,8 @@
   "<" 'Custom-goto-parent
   (kbd "C-j") 'widget-forward
   (kbd "C-k") 'widget-backward
+  (kbd "]") 'widget-forward
+  (kbd "[") 'widget-backward
   "q" 'Custom-buffer-done)
 
 (provide 'evil-custom)
