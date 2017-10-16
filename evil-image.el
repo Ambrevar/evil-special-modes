@@ -35,8 +35,10 @@
   (kbd "<space>") 'image-scroll-up
   (kbd "S-<space>") 'image-scroll-down
   "F" 'image-goto-frame
-  "H" 'image-previous-frame
-  "L" 'image-next-frame
+  "," 'image-previous-frame ; mplayer/mpv style
+  "." 'image-next-frame ; mplayer/mpv style
+  "H" 'image-transform-fit-to-height
+  "W" 'image-transform-fit-to-width
   "K" 'image-previous-file
   "J" 'image-next-file
   "q" 'quit-window
@@ -49,9 +51,9 @@
   "$" 'image-eol
   "j" 'image-next-line
   "k" 'image-previous-line
-  "a+" 'image-increase-speed
-  "a-" 'image-decrease-speed
   (kbd "C-d") 'image-scroll-down
+  "}" 'image-increase-speed ; mplayer/mpv style
+  "{" 'image-decrease-speed ; mplayer/mpv style
   "a0" 'image-reset-speed
   "ar" 'image-reverse-speed
   (kbd "C-c C-c") 'image-toggle-display
