@@ -60,7 +60,7 @@
 ;; TODO: What if the user changes `evil-want-C-u-scroll' after this is run?
 (when evil-want-C-u-scroll
   (evil-define-key 'motion image-mode-map
-    "C-u" 'image-scroll-up))
+    (kbd "C-u") 'image-scroll-up))
 
 (provide 'evil-image)
 ;;; evil-image.el ends here
