@@ -4,6 +4,8 @@ This is a collection of [Evil](https://github.com/emacs-evil/evil) bindings for
 _the rest of Emacs_ the Evil mode does not cover by default, such as
 `helm-mode`, `M-x calendar`, Eshell and more.
 
+**Warning:** This project is still in an early development phase, expect a lot
+of binding changes.
 
 ## Goals
 
@@ -88,6 +90,7 @@ The rules are sorted by priority.
    - `C-e`, `C-y`
    - `C-f`, `C-b`
    - `C-d`, `C-u`
+   - `C-i`, `C-o`
    - `C-w`-prefixed bindings.
    - Some `z`-prefixed bindings (see below).
 
