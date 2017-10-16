@@ -32,7 +32,7 @@
   (kbd "<space>") 'scroll-up-command
   (kbd "<tab>") 'forward-button
   (kbd "<backtab>") 'backward-button
-  (kbd "M-s f") 'Man-goto-section
+  (kbd "M-s f") 'Man-goto-section ; TODO: Replace with something more Evil.
   "q" 'Man-quit
   "gm" 'man
   (kbd "C-j") 'Man-next-section
@@ -43,7 +43,7 @@
   "gs" 'Man-goto-see-also-section
   "u" 'Man-update-manpage
   "J" 'Man-next-manpage
-  "K" 'Man-previous-manpage)
+  "K" 'Man-previous-manpage) ; TODO: Don't override evil-lookup?
 
 (provide 'evil-man)
 ;;; evil-man.el ends here

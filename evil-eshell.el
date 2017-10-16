@@ -58,8 +58,8 @@
     (kbd "C-c C-c") 'evil-eshell-interrupt-process
     (kbd "M-h") 'eshell-backward-argument
     (kbd "M-l") 'eshell-forward-argument)
-  (evil-define-key 'insert
-    eshell-mode-map (kbd "M-h") 'eshell-backward-argument
+  (evil-define-key 'insert eshell-mode-map
+    (kbd "M-h") 'eshell-backward-argument
     (kbd "M-l") 'eshell-forward-argument))
 
 ;; TODO: Compare this setup procedure with evil-ediff.

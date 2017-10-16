@@ -32,8 +32,8 @@
 
 ;;; TODO: Rebinding ESC has the drawback that programs like vi cannot use it anymore.
 ;;; Workaround: switch to Emacs mode and double-press ESC.
-;;; Otherwise leave ESC to C-cC-j.
-;;; Or bind char-mode ESC to C-cC-x?
+;;; Otherwise leave ESC to "C-c C-j".
+;;; Or bind char-mode ESC to "C-c C-x"?
 
 (defun evil-term-char-mode-insert ()
   (interactive)
@@ -51,7 +51,6 @@
   "]" 'term-next-prompt
   (kbd "C-k") 'eshell-previous-prompt
   (kbd "C-j") 'eshell-next-prompt
-  ;; TODO: Why not J/K? Already bound to join/look-up. Does it matter?
   "0" 'term-bol
   "$" 'term-show-maximum-output)
 

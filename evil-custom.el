@@ -38,7 +38,7 @@
   (kbd "<tab>") 'widget-forward
   (kbd "S-<tab>") 'widget-backward
   (kbd "<backtab>") 'widget-backward
-  (kbd "M-s f") 'Man-goto-section
+  (kbd "M-s f") 'Man-goto-section ; TODO: Replace with something more Evil.
   "<" 'Custom-goto-parent
   (kbd "C-j") 'widget-forward
   (kbd "C-k") 'widget-backward

@@ -21,7 +21,8 @@
 ;; For a full copy of the GNU General Public License
 ;; see <http://www.gnu.org/licenses/>.
 
-;;; Commentary:
+;;; Commentary: The default bindings in motion state override the standard
+;;; movement keys.  This package restores them.
 
 ;;; Code:
 
@@ -36,7 +37,6 @@
   "gt" 'Info-top-node
   "gT" 'Info-toc
   "gf" 'Info-follow-reference
-  ;; TODO: Do we need the following?
   "w" 'evil-forward-word-begin
   "e" 'evil-forward-word-end
   "ge" 'evil-backward-word-end
