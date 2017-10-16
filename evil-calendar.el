@@ -37,7 +37,7 @@
   "j" 'calendar-forward-week
   "k" 'calendar-backward-week
   "\C-f" 'calendar-scroll-left-three-months
-  ;; (kbd "<space>") 'scroll-other-window
+  (kbd "<space>") 'scroll-other-window
   "." 'calendar-goto-today
   "<" 'calendar-scroll-right
   ">" 'calendar-scroll-left
