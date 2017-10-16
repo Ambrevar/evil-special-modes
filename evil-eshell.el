@@ -53,16 +53,16 @@
   (evil-define-key 'normal eshell-mode-map
     "[" 'eshell-previous-prompt
     "]" 'eshell-next-prompt
-    "\C-k" 'eshell-previous-prompt
-    "\C-j" 'eshell-next-prompt
+    (kbd "C-k") 'eshell-previous-prompt
+    (kbd "C-j") 'eshell-next-prompt
     "0" 'eshell-bol
-    (kbd "RET") 'eshell-send-input
     (kbd "C-c C-c") 'evil/eshell-interrupt-process
-    "\M-h" 'eshell-backward-argument
-    "\M-l" 'eshell-forward-argument)
+    (kbd "<return>") 'eshell-send-input
+    (kbd "M-h") 'eshell-backward-argument
+    (kbd "M-l") 'eshell-forward-argument)
   (evil-define-key 'insert
-    eshell-mode-map "\M-h" 'eshell-backward-argument
-    "\M-l" 'eshell-forward-argument))
+    eshell-mode-map (kbd "M-h") 'eshell-backward-argument
+    (kbd "M-l") 'eshell-forward-argument))
 
 ;; TODO: Compare this setup procedure with evil-ediff.  Decide on a namespace
 ;; separator.

@@ -31,7 +31,7 @@
 (evil-set-initial-state 'package-menu-mode 'motion)
 
 (evil-define-key 'motion package-menu-mode-map
-  "q" 'quit-window ; TODO: Use \C-wq?
+  "q" 'quit-window ; TODO: Use "C-w q"?
   "i" 'package-menu-mark-install
   "U" 'package-menu-mark-upgrades
   "u" 'package-menu-mark-unmark

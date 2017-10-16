@@ -36,7 +36,7 @@
   "l" 'calendar-forward-day
   "j" 'calendar-forward-week
   "k" 'calendar-backward-week
-  "\C-f" 'calendar-scroll-left-three-months
+  (kbd "C-f") 'calendar-scroll-left-three-months
   (kbd "<space>") 'scroll-other-window
   "." 'calendar-goto-today
   "<" 'calendar-scroll-right
@@ -48,22 +48,22 @@
   "a" 'calendar-list-holidays
   "c" 'org-calendar-goto-agenda
   "d" 'diary-view-entries
-  "\M-h" 'calendar-cursor-holidays
+  ("M-h") 'calendar-cursor-holidays
   "m" 'diary-mark-entries
   "o" 'calendar-other-month
   "q" 'calendar-exit
   "s" 'diary-show-all-entries
   "u" 'calendar-unmark
   "x" 'calendar-mark-holidays
-  "\C-c\C-l" 'calendar-redraw
+  (kbd "C-c C-l") 'calendar-redraw
   "[" 'calendar-backward-year
   "]" 'calendar-forward-year
-  "\M-<" 'calendar-beginning-of-year
-  "\M-=" 'calendar-count-days-region
-  "\M->" 'calendar-end-of-year
+  (kbd "M-<") 'calendar-beginning-of-year
+  (kbd "M-=") 'calendar-count-days-region
+  (kbd "M->") 'calendar-end-of-year
   "(" 'calendar-beginning-of-month
   ")" 'calendar-end-of-month
-  "\C-b" 'calendar-scroll-right-three-months
+  (kbd "C-b") 'calendar-scroll-right-three-months
   "{" 'calendar-backward-month
   "}" 'calendar-forward-month)
 

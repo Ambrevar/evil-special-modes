@@ -29,10 +29,10 @@
 (require 'info)
 
 (evil-define-key 'motion Info-mode-map
-  "\C-j" 'Info-next
-  "\C-k" 'Info-prev
-  "\M-sf" 'Info-goto-node ; TODO: Replace with something more Evil.
-  "\M-w" 'Info-copy-current-node-name
+  (kbd "C-j") 'Info-next
+  (kbd "C-k") 'Info-prev
+  (kbd "M-s f") 'Info-goto-node ; TODO: Replace with something more Evil.
+  (kbd "M-w") 'Info-copy-current-node-name
   "gt" 'Info-top-node
   "gT" 'Info-toc
   "gf" 'Info-follow-reference

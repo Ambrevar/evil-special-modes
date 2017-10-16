@@ -29,12 +29,12 @@
 (require 'help-mode)
 
 (evil-define-key 'motion help-mode-map
-  (kbd "SPC") 'scroll-up-command
-  "\C-f" 'scroll-up-command
-  "\C-b" 'scroll-down-command
-  (kbd "TAB") 'forward-button
+  (kbd "<space>") 'scroll-up-command
+  (kbd "C-f") 'scroll-up-command
+  (kbd "C-b") 'scroll-down-command
+  (kbd "<tab>") 'forward-button
   (kbd "<backtab>") 'backward-button
-  "\C-o" 'help-go-back)
+  (kbd "C-o") 'help-go-back)
 
 (provide 'evil-help)
 ;;; evil-help.el ends here

@@ -49,12 +49,12 @@
   "$" 'image-eol
   "j" 'image-next-line
   "k" 'image-previous-line
-  "\C-d" 'image-scroll-down
   "a+" 'image-increase-speed
   "a-" 'image-decrease-speed
+  (kbd "C-d") 'image-scroll-down
   "a0" 'image-reset-speed
   "ar" 'image-reverse-speed
-  "\C-c\C-c" 'image-toggle-display
+  (kbd "C-c C-c") 'image-toggle-display
   (kbd "DEL") 'image-scroll-down)
 
 ;; TODO: What if the user changes `evil-want-C-u-scroll' after this is run?

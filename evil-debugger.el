@@ -31,9 +31,9 @@
 (evil-set-initial-state 'debugger-mode 'motion)
 
 (evil-define-key 'motion debugger-mode-map
-  (kbd "TAB") 'forward-button
-  (kbd "RET") 'debug-help-follow
-  (kbd "SPC") 'next-line
+  (kbd "<tab>") 'forward-button
+  (kbd "<return>") 'debug-help-follow
+  (kbd "<space>") 'next-line
   "R" 'debugger-record-expression
   "gb" 'debugger-frame
   "c" 'debugger-continue

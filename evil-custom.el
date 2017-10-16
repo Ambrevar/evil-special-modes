@@ -31,17 +31,17 @@
 (evil-set-initial-state 'Custom-mode 'motion)
 
 (evil-define-key 'motion custom-mode-map
-  (kbd "SPC") 'scroll-up-command
-  (kbd "S-SPC") 'scroll-down-command
-  (kbd "DEL") 'scroll-down-command
-  (kbd "RET") 'Custom-newline
-  (kbd "TAB") 'widget-forward
-  (kbd "S-TAB") 'widget-backward
+  (kbd "<space>") 'scroll-up-command
+  (kbd "S-<space>") 'scroll-down-command
+  (kbd "<delete>") 'scroll-down-command
+  (kbd "<return>") 'Custom-newline
+  (kbd "<tab>") 'widget-forward
+  (kbd "S-<tab>") 'widget-backward
   (kbd "<backtab>") 'widget-backward
-  "\M-sf" 'Man-goto-section
+  (kbd "M-s f") 'Man-goto-section
   "<" 'Custom-goto-parent
-  "\C-j" 'widget-forward
-  "\C-k" 'widget-backward
+  (kbd "C-j") 'widget-forward
+  (kbd "C-k") 'widget-backward
   "q" 'Custom-buffer-done)
 
 (provide 'evil-custom)

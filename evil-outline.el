@@ -29,7 +29,7 @@
 (require 'outline)
 
 (evil-define-key 'motion outline-mode-map
-  (kbd "TAB") 'outline-toggle-children)
+  (kbd "<tab>") 'outline-toggle-children)
 
 (provide 'evil-outline)
 ;;; evil-outline.el ends here
