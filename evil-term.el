@@ -44,13 +44,13 @@
   (kbd "C-c C-k") 'evil-term-char-mode-insert
   (kbd "RET") 'term-send-input)
 
-(evil-define-key 'insert term-mode-map "\C-c\C-k" 'term-char-mode)
+(evil-define-key 'insert term-mode-map (kbd "C-c C-k") 'term-char-mode)
 
 (evil-define-key 'normal term-mode-map
   "[" 'term-previous-prompt
   "]" 'term-next-prompt
-  (kbd "C-k") 'eshell-previous-prompt
-  (kbd "C-j") 'eshell-next-prompt
+  (kbd "C-k") 'term-previous-prompt
+  (kbd "C-j") 'term-next-prompt
   "0" 'term-bol
   "$" 'term-show-maximum-output)
 
