@@ -23,16 +23,25 @@
 
 ;;; Commentary:
 ;;;
-;;; When the header is read-only, switch to motion mode with simple bindings.
-;;; When writable, use normal mode with some bindings when it makes sense.
+;;; Evil-Diff re-uses the read-only particularity of `diff-mode':
+;;; When the buffer is read-only, enter motion state
+;;; and manipulate the diffs with simple bindings.
+;;; When the buffer is writage, use normal/insert states with some Evil-specific
+;;; keys to ease navigation.
+;;;
+;;; Enable Evil-Diff with
+;;;
+;;;     (add-hook 'diff-mode-hook 'evil-diff-init)
+;;;
+;;; See also:
+;;;
+;;; - `evil-diff-auto-switch-state'
+;;; - `evil-diff-toggle-read-only'
 
 ;;; Code:
 
 (require 'evil)
 (require 'diff-mode)
-
-;; TODO: Both `[[` and `C-M-a` do not go back to previous index once they are at
-;; the beginning of an index.
 
 (defun evil-diff-read-only-state ()
   "Switch to motion state if read-only, normal state otherwise."
@@ -91,7 +100,16 @@ else cover the whole buffer."
     (when (= old-point-max (point-max))
       (diff-context->unified start end))))
 
-;;; TODO: Add more keys to normal mode?
+;;; TODO: Report this improvement upstream.
+(defun evil-diff-toggle-restrict-view (&optional arg)
+  "Toggle the restriction of the view to the current hunk.
+When restricting and if the prefix ARG is given, restrict the view to the
+current file instead."
+  (interactive "P")
+  (if (buffer-narrowed-p)
+      (widen)
+    (diff-restrict-view arg)))
+
 (evil-define-key 'normal diff-mode-map
   (kbd "SPC") 'scroll-up-command
   (kbd "S-SPC") 'scroll-down-command
@@ -119,7 +137,7 @@ else cover the whole buffer."
 
   "ge" 'diff-ediff-patch
   "i" 'next-error-follow-minor-mode
-  "o" 'diff-restrict-view ; TODO: Should be able to toggle, no?
+  "o" 'evil-diff-toggle-restrict-view
   "~" 'diff-reverse-direction
   "s" 'diff-split-hunk
   "c" 'diff-test-hunk
