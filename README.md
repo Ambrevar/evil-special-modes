@@ -2,10 +2,11 @@
 
 This is a collection of [Evil](https://github.com/emacs-evil/evil) bindings for
 _the rest of Emacs_ the Evil mode does not cover by default, such as
-`helm-mode`, `M-x calendar`, Eshell and more.
+`help-mode`, `M-x calendar`, Eshell and more.
 
-**Warning:** This project is still in an early development phase, expect a lot
-of binding changes.
+**Warning:** This project is still in an early development phase, expect some
+changes in the default binding in the future.
+
 
 ## Goals
 
@@ -68,6 +69,7 @@ The rules are sorted by priority.
 	- `{`, `}`
 	- `%`
 	- `+`, `-`, `0`, `^`, `$`
+	- `C-i`, `C-o`
 
 2. Keep the search keys when possible and sensible.
 
@@ -76,8 +78,8 @@ The rules are sorted by priority.
 
 3. Keep the yanking and register keys when possible and sensible.
 
-   - `y`, `Y`
-   - `"`
+	- `y`, `Y`
+	- `"`
 
 4. Keep the mark keys when possible and sensible.
 
@@ -86,13 +88,12 @@ The rules are sorted by priority.
 
 5. Keep the windowing keys when possible and sensible.
 
-   - `H`, `L`, `M`
-   - `C-e`, `C-y`
-   - `C-f`, `C-b`
-   - `C-d`, `C-u`
-   - `C-i`, `C-o`
-   - `C-w`-prefixed bindings.
-   - Some `z`-prefixed bindings (see below).
+	- `H`, `L`, `M`
+	- `C-e`, `C-y`
+	- `C-f`, `C-b`
+	- `C-d`, `C-u`
+	- `C-w`-prefixed bindings.
+	- Some `z`-prefixed bindings (see below).
 
 6. The following keys are free when insert-mode does not make sense in the
 current mode:
@@ -110,8 +111,8 @@ current mode:
 
 7. Prefix keys: `g` and `z` are the ubiqutous prefix keys.
 
-   - `g` generally stangs for "go" and is best used for movements.
-   - `z` is used for scrolling, folding, spell-checking and more.
+	- `g` generally stangs for "go" and is best used for movements.
+	- `z` is used for scrolling, folding, spell-checking and more.
 
 8. [WIP] Macro and action keys (Work-in-progress, see below)
 
