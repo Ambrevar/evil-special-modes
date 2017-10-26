@@ -31,12 +31,17 @@
 (evil-set-initial-state 'package-menu-mode 'motion)
 
 (evil-define-key 'motion package-menu-mode-map
-  "q" 'quit-window ; TODO: Use "C-w q"?
   "i" 'package-menu-mark-install
   "U" 'package-menu-mark-upgrades
-  "u" 'package-menu-mark-unmark
   "d" 'package-menu-mark-delete
-  "x" 'package-menu-execute)
+
+  ;; marking
+  "u" 'package-menu-mark-unmark
+  "x" 'package-menu-execute
+
+  ;; "q" 'quit-window ; macros can make sense here.
+  "ZQ" 'quit-window
+  "ZZ" 'quit-window)
 
 (provide 'evil-package)
 ;;; evil-package.el ends here
