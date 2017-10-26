@@ -29,12 +29,22 @@
 (require 'help-mode)
 
 (evil-define-key 'motion help-mode-map
-  (kbd "<space>") 'scroll-up-command
+  ;; motion
+  (kbd "SPC") 'scroll-up-command
+  (kbd "S-SPC") 'scroll-down-command
   (kbd "C-f") 'scroll-up-command
   (kbd "C-b") 'scroll-down-command
   (kbd "<tab>") 'forward-button
   (kbd "<backtab>") 'backward-button
-  (kbd "C-o") 'help-go-back)
+
+  (kbd "C-o") 'help-go-back
+  (kbd "C-i") 'help-go-forward
+
+  ;; quit
+  "q" 'quit-window
+  "ZQ" 'quit-window
+  "ZZ" 'quit-window)
+
 
 (provide 'evil-help)
 ;;; evil-help.el ends here
