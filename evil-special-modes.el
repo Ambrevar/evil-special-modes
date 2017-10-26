@@ -37,6 +37,7 @@ instance:
   (with-eval-after-load 'calendar (require 'evil-calendar))
   (with-eval-after-load 'cus-edit (require 'evil-custom))
   (with-eval-after-load 'debug (require 'evil-debugger))
+  (with-eval-after-load 'diff-mode (require 'evil-diff-mode))
   (with-eval-after-load 'eshell (require 'evil-eshell))
   (with-eval-after-load 'help (require 'evil-help))
   (with-eval-after-load 'image-mode (require 'evil-image))
@@ -44,6 +45,7 @@ instance:
   (with-eval-after-load 'man (require 'evil-man))
   (with-eval-after-load 'outline (require 'evil-outline))
   (with-eval-after-load 'package (require 'evil-package))
+  (with-eval-after-load 'proced (require 'evil-proced))
   (with-eval-after-load 'term (require 'evil-term)))
 
 (provide 'evil-special-modes)
