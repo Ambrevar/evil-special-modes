@@ -97,15 +97,18 @@ current file instead."
     (diff-restrict-view arg)))
 
 (evil-define-key 'normal diff-mode-map
+  ;; motion
   (kbd "SPC") 'scroll-up-command
   (kbd "S-SPC") 'scroll-down-command
   (kbd "[") 'diff-file-prev
   (kbd "]") 'diff-file-next
   (kbd "C-j") 'diff-hunk-next
   (kbd "C-k") 'diff-hunk-prev
+
   "\\" 'evil-diff-read-only-mode)
 
 (evil-define-key 'motion diff-mode-map
+  ;; motion
   (kbd "SPC") 'scroll-up-command
   (kbd "S-SPC") 'scroll-down-command
   (kbd "[") 'diff-file-prev
