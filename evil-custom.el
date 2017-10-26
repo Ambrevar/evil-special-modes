@@ -31,20 +31,29 @@
 (evil-set-initial-state 'Custom-mode 'motion)
 
 (evil-define-key 'motion custom-mode-map
-  (kbd "<space>") 'scroll-up-command
-  (kbd "S-<space>") 'scroll-down-command
-  (kbd "<delete>") 'scroll-down-command
-  (kbd "<return>") 'Custom-newline
+  ;; motion
   (kbd "<tab>") 'widget-forward
   (kbd "S-<tab>") 'widget-backward
   (kbd "<backtab>") 'widget-backward
-  (kbd "M-s f") 'Man-goto-section ; TODO: Replace with something more Evil.
-  "<" 'Custom-goto-parent
-  (kbd "C-j") 'widget-forward
-  (kbd "C-k") 'widget-backward
+  (kbd "SPC") 'scroll-up-command
+  (kbd "S-SPC") 'scroll-down-command
+  (kbd "<delete>") 'scroll-down-command
+  (kbd "<return>") 'Custom-newline
   (kbd "]") 'widget-forward
   (kbd "[") 'widget-backward
-  "q" 'Custom-buffer-done)
+  ;; TODO: Should the following be added?
+  (kbd "C-j") 'widget-forward
+  (kbd "C-k") 'widget-backward
+
+  "^" 'Custom-goto-parent
+  (kbd "C-o") 'Custom-goto-parent
+  ;; TODO: Should the following be added?
+  ;; "<" 'Custom-goto-parent
+
+  ;; quit
+  "q" 'Custom-buffer-done
+  "ZQ" 'Custom-buffer-done
+  "ZZ" 'Custom-buffer-done)
 
 (provide 'evil-custom)
 ;;; evil-custom.el ends here
