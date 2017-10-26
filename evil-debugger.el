@@ -31,20 +31,28 @@
 (evil-set-initial-state 'debugger-mode 'motion)
 
 (evil-define-key 'motion debugger-mode-map
+  ;; motion
   (kbd "<tab>") 'forward-button
+  (kbd "S-<tab>") 'backward-button
   (kbd "<return>") 'debug-help-follow
-  (kbd "<space>") 'next-line
+  (kbd "SPC") 'next-line
+
   "R" 'debugger-record-expression
-  "gb" 'debugger-frame
   "c" 'debugger-continue
   "d" 'debugger-step-through
   "x" 'debugger-eval-expression
   "J" 'debugger-jump
-  "zl" 'debugger-list-functions
-  "q" 'top-level
+
+  "gl" 'debugger-list-functions
+  "gb" 'debugger-frame
   "r" 'debugger-return-value
   "u" 'debugger-frame-clear
-  "p" 'debugger-toggle-locals)
+  "p" 'debugger-toggle-locals
+
+  ;; quit
+  "q" 'top-level
+  "ZQ" 'top-level
+  "ZZ" 'top-level)
 
 (provide 'evil-debugger)
 ;;; evil-debugger.el ends here
