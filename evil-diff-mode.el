@@ -1,4 +1,4 @@
-;;; evil-diff.el --- Add Evil bindings to diff-mode
+;;; evil-diff-mode.el --- Add Evil bindings to diff-mode
 
 ;; Copyright (C) 2017 Pierre Neidhardt
 
@@ -140,5 +140,5 @@ current file instead."
   "For `unload-feature'."
   (remove-hook 'diff-mode-hook 'evil-diff-toggle-setup))
 
-(provide 'evil-diff)
-;;; evil-diff.el ends here
+(provide 'evil-diff-mode)
+;;; evil-diff-mode.el ends here
