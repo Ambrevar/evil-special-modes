@@ -29,21 +29,30 @@
 (require 'man)
 
 (evil-define-key 'motion Man-mode-map
-  (kbd "<space>") 'scroll-up-command
+  ;; motion
+  (kbd "SPC") 'scroll-up-command
+  (kbd "S-SPC") 'scroll-down-command
   (kbd "<tab>") 'forward-button
   (kbd "<backtab>") 'backward-button
-  (kbd "M-s f") 'Man-goto-section ; TODO: Replace with something more Evil.
-  "q" 'Man-quit
-  "gm" 'man
+
+  (kbd "]") 'Man-next-manpage
+  (kbd "[") 'Man-previous-manpage
   (kbd "C-j") 'Man-next-section
   (kbd "C-k") 'Man-previous-section
-  (kbd "]") 'Man-next-section
-  (kbd "[") 'Man-previous-section
-  "gr" 'Man-follow-manual-reference
+
+  ;; goto
+  "gm" 'man
+  "gd" 'Man-goto-section
+  "gR" 'Man-follow-manual-reference
   "gs" 'Man-goto-see-also-section
-  "u" 'Man-update-manpage
-  "J" 'Man-next-manpage
-  "K" 'Man-previous-manpage) ; TODO: Don't override evil-lookup?
+
+  ;; update
+  "gr" 'Man-update-manpage
+
+  ;; quit
+  "q" 'Man-quit
+  "ZQ" 'Man-quit
+  "ZZ" 'Man-quit)
 
 (provide 'evil-man)
 ;;; evil-man.el ends here
