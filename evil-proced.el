@@ -33,6 +33,7 @@
 (evil-define-key 'motion proced-mode-map
   (kbd "<return>") 'proced-refine
 
+  ;; marking
   ;; TODO: Implement a proced-toggle-mark?
   "m" 'proced-mark ; Mentioned in documentation, should be followed.
   "M" 'proced-mark-all
@@ -53,8 +54,6 @@
 
   "O" 'proced-omit-processes ; TODO: Work this binding out.
 
-  "gr" 'revert-buffer
-
   "x" 'proced-send-signal ; Emacs has "k" and "x", "k" is mentioned in documentation
   "s" 'proced-filter-interactive ; Refers to "[s]elect", Emacs has "f" mentioned in documentation.
   "S" 'proced-format-interactive
@@ -67,9 +66,16 @@
   "ot" 'proced-sort-time
   "ou" 'proced-sort-user
 
-  "q" 'quit-window ; TODO: Macro support?
+  "r" 'proced-renice
 
-  "r" 'proced-renice)
+  ;; update
+  "gr" 'revert-buffer
+
+  ;; quit
+  "q" 'quit-window ; TODO: Macro support?
+  "ZQ" 'quit-window
+  "ZZ" 'quit-window)
+
 
 (provide 'evil-proced)
 ;;; evil-proced.el ends here
