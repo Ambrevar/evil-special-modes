@@ -30,13 +30,7 @@
 (require 'info)
 
 (evil-define-key 'motion Info-mode-map
-  (kbd "C-j") 'Info-next
-  (kbd "C-k") 'Info-prev
-  (kbd "M-s f") 'Info-goto-node ; TODO: Replace with something more Evil.
-  (kbd "M-w") 'Info-copy-current-node-name
-  "gt" 'Info-top-node
-  "gT" 'Info-toc
-  "gf" 'Info-follow-reference
+  ;; motion: Restore some Evil keys that got overriden.
   "w" 'evil-forward-word-begin
   "e" 'evil-forward-word-end
   "ge" 'evil-backward-word-end
@@ -48,7 +42,24 @@
   "f" 'evil-find-char
   "n" 'evil-search-next
   "?" 'evil-search-backward
-  "p" nil)
+  ;; TODO: "[" and "]" are Emacs default for fine-grained browsing.
+  ;; We usually use "C-j"/"C-k" for that.
+  (kbd "C-j") 'Info-next
+  (kbd "C-k") 'Info-prev
+
+  ;; goto
+  "gd" 'Info-goto-node
+  "gt" 'Info-top-node
+  "gT" 'Info-toc
+  "gf" 'Info-follow-reference
+
+  (kbd "M-w") 'Info-copy-current-node-name ; TODO: Use yn?
+  "p" nil
+
+  ;; quit
+  "q" 'Info-exit
+  "ZQ" 'Info-exit
+  "ZZ" 'Info-exit)
 
 (provide 'evil-info)
 ;;; evil-info.el ends here
