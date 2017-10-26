@@ -54,7 +54,7 @@ Evil bindings for various modes.  Since special modes are by definition
 structurally incomparable, those rules cannot be expected to be applied
 universally.
 
-The rules are sorted by priority.
+The rules are more-or-less sorted by priority.
 
 0. Don't bind anything to `:` nor `<escape>`.
 
@@ -71,15 +71,15 @@ The rules are sorted by priority.
 	- `+`, `-`, `0`, `^`, `$`
 	- `C-i`, `C-o`
 
-2. Keep the search keys when possible and sensible.
-
-	- `/`, `?`
-	- `#`, `*`
-
-3. Keep the yanking and register keys when possible and sensible.
+2. Keep the yanking and register keys when possible and sensible.
 
 	- `y`, `Y`
 	- `"`
+
+3. Keep the search keys when possible and sensible.
+
+	- `/`, `?`
+	- `#`, `*`
 
 4. Keep the mark keys when possible and sensible.
 
@@ -109,9 +109,9 @@ current mode:
 
 	Any of those keys can be set to be a prefix key.
 
-7. Prefix keys: `g` and `z` are the ubiqutous prefix keys.
+7. Prefix keys: `g` and `z` are the ubiquitous prefix keys.
 
-	- `g` generally stangs for "go" and is best used for movements.
+	- `g` generally stands for "go" and is best used for movements.
 	- `z` is used for scrolling, folding, spell-checking and more.
 
 8. [WIP] Macro and action keys (Work-in-progress, see below)
@@ -140,6 +140,65 @@ remap `C-h`.
 In Vim, `q` is for recording macros.  In most Emacs special modes, it stands for
 quitting, which macros are recorded/played with `<f3>` and `<f4>`.
 Vim quits with `ZZ` or `ZQ`.
+
+I think a good rule of thumb to follow would be:
+
+- Always bind `ZZ` and `ZQ` to the quitting function(s), `evil-quit` if nothing
+  else makes sense.
+
+- Bind `q` to `evil-quit` if macros don't make sense in current mode.
+
+- If macros don't make sense, then `@` is available.
+
+### Ubiquitous bindings for ubiquitous actions
+
+Many special modes share the same set of similar actions.  Those actions should
+share the same bindings across all modes whenever feasible.
+
+#### Reverting
+
+- `gr` seems to be widely accepted.
+
+#### Marking
+
+There are two schools that change the use when the main "mark" action is applied
+to a sequence.
+
+- The main "mark" action is a toggle.
+
+    "m" 'mark-toggle
+    "*" 'mark-toggle-all
+    "M" 'mark-remove-all
+    "%" 'mark-regexp
+    "x" 'mark-do-flagged
+
+- The main "mark" action is not a toggle.
+
+    "m" 'mark
+    "M" 'mark-all
+	"u" 'mark-remove
+    "U" 'mark-remove-all
+    "*" 'mark-toggle-all
+    "%" 'mark-regexp
+    "x" 'mark-do-flagged
+
+In both cases, if we use `*` then `#` is equally available.
+
+#### Filtering
+
+`s` and `S` seem to be used in some places like mu4e.
+
+`~` is usually free and echoes AWK's regexp filtering.
+
+`=` is also free and its significance is obvious.
+
+`|` is not free but the pipe symbolic is very tentalizing.
+
+#### Sorting
+
+`o`?
+
+
 
 ### Modes left behind
 
