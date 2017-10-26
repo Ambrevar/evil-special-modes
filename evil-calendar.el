@@ -29,43 +29,67 @@
 (require 'calendar)
 
 (evil-define-key 'motion calendar-mode-map
-  "v" 'calendar-set-mark
+  ;; motion
   "h" 'calendar-backward-day
-  "0" 'calendar-beginning-of-week
-  "$" 'calendar-end-of-week
-  "l" 'calendar-forward-day
   "j" 'calendar-forward-week
   "k" 'calendar-backward-week
-  (kbd "C-f") 'calendar-scroll-left-three-months
-  (kbd "<space>") 'scroll-other-window
-  "." 'calendar-goto-today
-  "<" 'calendar-scroll-right
-  ">" 'calendar-scroll-left
-  "?" 'calendar-goto-info-node
-  "D" 'diary-view-other-diary-entries
-  "M" 'calendar-lunar-phases
-  "S" 'calendar-sunrise-sunset
-  "a" 'calendar-list-holidays
-  "c" 'org-calendar-goto-agenda
-  "d" 'diary-view-entries
-  (kbd "M-h") 'calendar-cursor-holidays
-  "m" 'diary-mark-entries
-  "o" 'calendar-other-month
-  "q" 'calendar-exit
-  "s" 'diary-show-all-entries
-  "u" 'calendar-unmark
-  "x" 'calendar-mark-holidays
-  (kbd "C-c C-l") 'calendar-redraw
+  "l" 'calendar-forward-day
+  "0" 'calendar-beginning-of-week
+  "^" 'calendar-beginning-of-week
+  "$" 'calendar-end-of-week
   "[" 'calendar-backward-year
   "]" 'calendar-forward-year
   (kbd "M-<") 'calendar-beginning-of-year
-  (kbd "M-=") 'calendar-count-days-region
   (kbd "M->") 'calendar-end-of-year
   "(" 'calendar-beginning-of-month
   ")" 'calendar-end-of-month
+  (kbd "SPC") 'scroll-other-window
+  (kbd "S-SPC") 'scroll-other-window-down
+  (kbd "<delete>") 'scroll-other-window-down
+  "<" 'calendar-scroll-right
+  ">" 'calendar-scroll-left
   (kbd "C-b") 'calendar-scroll-right-three-months
+  (kbd "C-f") 'calendar-scroll-left-three-months
   "{" 'calendar-backward-month
-  "}" 'calendar-forward-month)
+  "}" 'calendar-forward-month
+  (kbd "C-k") 'calendar-backward-month
+  (kbd "C-j") 'calendar-forward-month
+
+  ;; marking
+  "v" 'calendar-set-mark
+  "u" 'calendar-unmark
+  "x" 'calendar-mark-holidays
+
+  ;; goto
+  "." 'calendar-gototoday
+  "gd" 'calendar-goto-date ; TODO: Ubiquitous key to "goto"? "gd" in evil-org-agenda, "gd" in Emacs.
+  ;; "gd" 'calendar-other-month ; Not very useful if we have `calendar-goto-date'.
+
+
+  ;; diary
+  "D" 'diary-view-other-diary-entries
+  "d" 'diary-view-entries
+  "m" 'diary-mark-entries
+  "s" 'diary-show-all-entries
+
+  ;; show
+  "gm" 'calendar-lunar-phases ; "gm" in evil-org-agenda. TODO: Shadows calendar-mayan.
+  "gs" 'calendar-sunrise-sunset ; "gs" in evil-org-agenda
+  "gh" 'calendar-list-holidays ; "gh" in evil-org-agenda. TODO: Shadows calendar-hebrew.
+  "gc" 'org-calendar-goto-agenda ; "gc" in evil-org-agenda. TODO: Shadows calendar-iso.
+  (kbd "M-h") 'calendar-cursor-holidays ; TODO: Binding?
+
+  ;; update
+  "gr" 'calendar-redraw
+
+  "?" 'calendar-goto-info-node ; Search is not very useful.
+  (kbd "M-=") 'calendar-count-days-region
+
+  ;; quit
+  "q" 'calendar-exit
+  "ZQ" 'calendar-exit
+  "ZZ" 'calendar-exit)
+
 
 (provide 'evil-calendar)
 ;;; evil-calendar.el ends here
