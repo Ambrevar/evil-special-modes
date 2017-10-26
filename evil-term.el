@@ -47,11 +47,13 @@
 (evil-define-key 'insert term-mode-map (kbd "C-c C-k") 'term-char-mode)
 
 (evil-define-key 'normal term-mode-map
+  ;; motion
   "[" 'term-previous-prompt
   "]" 'term-next-prompt
   (kbd "C-k") 'term-previous-prompt
   (kbd "C-j") 'term-next-prompt
   "0" 'term-bol
+  "^" 'term-bol
   "$" 'term-show-maximum-output)
 
 (defun evil-term-char-mode-entry-function ()
