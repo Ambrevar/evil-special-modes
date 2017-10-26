@@ -49,16 +49,20 @@
 ;;; need to add bindings to `eshell-first-time-mode-hook'.
 (defun evil-eshell-set-keys ()
   (evil-define-key 'normal eshell-mode-map
+    ;; motion
     "[" 'eshell-previous-prompt
     "]" 'eshell-next-prompt
     (kbd "C-k") 'eshell-previous-prompt
     (kbd "C-j") 'eshell-next-prompt
     "0" 'eshell-bol
-    (kbd "<return>") 'eshell-send-input
-    (kbd "C-c C-c") 'evil-eshell-interrupt-process
+    "^" 'eshell-bol
     (kbd "M-h") 'eshell-backward-argument
-    (kbd "M-l") 'eshell-forward-argument)
+    (kbd "M-l") 'eshell-forward-argument
+
+    (kbd "<return>") 'eshell-send-input
+    (kbd "C-c C-c") 'evil-eshell-interrupt-process)
   (evil-define-key 'insert eshell-mode-map
+    ;; motion
     (kbd "M-h") 'eshell-backward-argument
     (kbd "M-l") 'eshell-forward-argument))
 
