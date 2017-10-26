@@ -31,7 +31,7 @@
 ;;;
 ;;; Enable Evil-Diff with
 ;;;
-;;;     (add-hook 'diff-mode-hook 'evil-diff-init)
+;;;     (require 'evil-diff)
 ;;;
 ;;; See also:
 ;;;
@@ -43,8 +43,12 @@
 (require 'evil)
 (require 'diff-mode)
 
-(defun evil-diff-read-only-state ()
-  "Switch to motion state if read-only, normal state otherwise."
+(defun evil-diff-read-only-mode ()
+  "Toggle read-only and motion/normal state.
+
+If read-only, switch to motion state.
+If not, switch to normal state."
+  (read-only-mode 'toggle)
   (if buffer-read-only
       (progn
         (evil-motion-state)
@@ -52,37 +56,19 @@
     (evil-normal-state)
     (message "Evil Diff: enter normal state")))
 
-(defun evil-diff-auto-switch-state (&optional disable)
-  "Automatically switch to motion state if read-only, normal state otherwise.
-
-When DISABLE is non-nil or with prefix argument, disable this behaviour.
-
-You can add this function to a hook:
-
-    (add-hook 'diff-mode-hook 'evil-diff-auto-switch-state)"
-  (interactive "P")
-  (if disable
-      (remove-hook 'read-only-mode-hook 'evil-diff-read-only-state t)
-    (add-hook 'read-only-mode-hook 'evil-diff-read-only-state nil t)))
-
-(defun evil-diff-init ()
+(defun evil-diff-toggle-setup ()
   "Visit diff buffers in motion state.
 
 To enable when visiting diff files,
 
     (add-hook 'diff-mode-hook 'evil-diff-init)"
   (interactive)
-  (evil-diff-auto-switch-state)
-  (read-only-mode))
-
-(defun evil-diff-toggle-read-only ()
-  "Toggle read-only.
-
-If read-only, switch to motion state.
-If not, switch to normal state."
-  (interactive)
-  (read-only-mode 'toggle)
-  (evil-diff-read-only-state))
+  (when (eq major-mode 'diff-mode)
+    ;; (evil-diff-auto-switch-state)
+    (if (memq 'evil-diff-read-only-state 'read-only-mode-hook)
+        (remove-hook 'read-only-mode-hook 'evil-diff-read-only-state t)
+      (add-hook 'read-only-mode-hook 'evil-diff-read-only-state nil t)
+      (read-only-mode))))
 
 ;;; TODO: Report this improvement upstream.
 (defun evil-diff-toggle-context-unified (start end)
@@ -117,7 +103,7 @@ current file instead."
   (kbd "]") 'diff-file-next
   (kbd "C-j") 'diff-hunk-next
   (kbd "C-k") 'diff-hunk-prev
-  "\\" 'evil-diff-toggle-read-only)
+  "\\" 'evil-diff-read-only-mode)
 
 (evil-define-key 'motion diff-mode-map
   (kbd "SPC") 'scroll-up-command
@@ -144,7 +130,15 @@ current file instead."
   "x" 'evil-diff-toggle-context-unified
   "#" 'diff-ignore-whitespace-hunk
 
-  "\\" 'evil-diff-toggle-read-only)
+  "\\" 'evil-diff-read-only-mode)
+
+
+
+(add-hook 'diff-mode-hook 'evil-diff-toggle-setup)
+
+(defun evil-diff-unload-function ()
+  "For `unload-feature'."
+  (remove-hook 'diff-mode-hook 'evil-diff-toggle-setup))
 
 (provide 'evil-diff)
 ;;; evil-diff.el ends here
