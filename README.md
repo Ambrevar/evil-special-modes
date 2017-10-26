@@ -150,6 +150,19 @@ I think a good rule of thumb to follow would be:
 
 - If macros don't make sense, then `@` is available.
 
+### Motion
+
+Use `[[` and `]]` for navigation between sections.
+
+If the mode makes no difference between the end of a section and the beginning
+of the next, use `[` and `]`.
+
+If there is granularity, i.e. subsections, use `C-j` and `C-k` to browse them.
+This reflects _evil-magit_ default bindings.
+
+If there is no paragraph structure, `{` and `}` can be used for sub-sectioning.
+If there is no sentence structure, `(` and `)` can be used for sub-sectioning.
+
 ### Ubiquitous bindings for ubiquitous actions
 
 Many special modes share the same set of similar actions.  Those actions should
@@ -198,7 +211,14 @@ In both cases, if we use `*` then `#` is equally available.
 
 `o`?
 
+#### Interactive "goto"
 
+`gd`?
+
+#### Help
+
+If searching makes sense, keep `?` for backward search.
+If not, it can be used to display help.
 
 ### Modes left behind
 
@@ -212,9 +232,15 @@ To keep the goals of this package within reach, we restrict the changes brought
 by this package to vanilla Emacs modes.
 Third-party packages are provided by several parties:
 
-- Ediff: https://github.com/emacs-evil/evil-ediff
-- Magit: https://github.com/emacs-evil/evil-magit
+- [evil-ediff](https://github.com/emacs-evil/evil-ediff)
+- [evil-magit](https://github.com/emacs-evil/evil-magit)
+- [evil-mu4e](https://github.com/JorisE/evil-mu4e)
 - Org-mode: https://github.com/GuiltyDolphin/org-evil or https://github.com/Somelauw/evil-org-mode
 
 Should you know any suitable package not mentioned in this list, let us know and
 file an issue.
+
+Other references:
+
+- [Spacemacs](http://spacemacs.org)
+- [Doom Emacs](https://github.com/hlissner/doom-emacs)
