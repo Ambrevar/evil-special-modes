@@ -215,6 +215,10 @@ In both cases, if we use `*` then `#` is equally available.
 
 `gd`?
 
+#### Browse URL
+
+`gu`?
+
 #### Help
 
 If searching makes sense, keep `?` for backward search.
