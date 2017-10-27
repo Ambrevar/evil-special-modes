@@ -52,6 +52,7 @@
     (evil-normal-state)
     (message "Evil Diff: enter normal state")))
 
+;;;###autoload
 (defun evil-diff-toggle-setup ()
   "Toggle visiting diff buffers in motion state."
   (interactive)
