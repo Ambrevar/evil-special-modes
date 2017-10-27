@@ -43,12 +43,8 @@
 (require 'evil)
 (require 'diff-mode)
 
-(defun evil-diff-read-only-mode ()
-  "Toggle read-only and motion/normal state.
-
-If read-only, switch to motion state.
-If not, switch to normal state."
-  (read-only-mode 'toggle)
+(defun evil-diff-read-only-state-switch ()
+  "Make read-only in motion state, writable in normal state."
   (if buffer-read-only
       (progn
         (evil-motion-state)
@@ -57,17 +53,12 @@ If not, switch to normal state."
     (message "Evil Diff: enter normal state")))
 
 (defun evil-diff-toggle-setup ()
-  "Visit diff buffers in motion state.
-
-To enable when visiting diff files,
-
-    (add-hook 'diff-mode-hook 'evil-diff-init)"
+  "Toggle visiting diff buffers in motion state."
   (interactive)
   (when (eq major-mode 'diff-mode)
-    ;; (evil-diff-auto-switch-state)
-    (if (memq 'evil-diff-read-only-state 'read-only-mode-hook)
-        (remove-hook 'read-only-mode-hook 'evil-diff-read-only-state t)
-      (add-hook 'read-only-mode-hook 'evil-diff-read-only-state nil t)
+    (if (memq 'evil-diff-read-only-state-switch read-only-mode-hook)
+        (remove-hook 'read-only-mode-hook 'evil-diff-read-only-state-switch t)
+      (add-hook 'read-only-mode-hook 'evil-diff-read-only-state-switch nil t)
       (read-only-mode))))
 
 ;;; TODO: Report this improvement upstream.
@@ -105,7 +96,7 @@ current file instead."
   (kbd "C-j") 'diff-hunk-next
   (kbd "C-k") 'diff-hunk-prev
 
-  "\\" 'evil-diff-read-only-mode)
+  "\\" 'read-only-mode) ; magit has "\"
 
 (evil-define-key 'motion diff-mode-map
   ;; motion
@@ -133,7 +124,7 @@ current file instead."
   "x" 'evil-diff-toggle-context-unified
   "#" 'diff-ignore-whitespace-hunk
 
-  "\\" 'evil-diff-read-only-mode)
+  "\\" 'read-only-mode) ; magit has "\"
 
 
 
