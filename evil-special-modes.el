@@ -50,6 +50,7 @@ instance:
   (with-eval-after-load 'outline (require 'evil-outline))
   (with-eval-after-load 'package (require 'evil-package))
   (with-eval-after-load 'proced (require 'evil-proced))
+  (with-eval-after-load 'profiler (require 'evil-profiler))
   (with-eval-after-load 'term (require 'evil-term)))
 
 (provide 'evil-special-modes)
