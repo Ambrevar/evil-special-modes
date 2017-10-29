@@ -51,7 +51,8 @@ instance:
   (with-eval-after-load 'package (require 'evil-package))
   (with-eval-after-load 'proced (require 'evil-proced))
   (with-eval-after-load 'profiler (require 'evil-profiler))
-  (with-eval-after-load 'term (require 'evil-term)))
+  (with-eval-after-load 'term (require 'evil-term))
+  (with-eval-after-load 'woman (require 'evil-woman)))
 
 (provide 'evil-special-modes)
 ;;; evil-special-modes.el ends here
