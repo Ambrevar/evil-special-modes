@@ -177,25 +177,16 @@ share the same bindings across all modes whenever feasible.
 There are two schools that change the use when the main "mark" action is applied
 to a sequence.
 
-- The main "mark" action is a toggle.
+	"m" 'mark-toggle or 'mark
+	"~" 'mark-toggle-all
+	"M" 'mark-remove-all
+	"%" 'mark-regexp
+	"x" 'mark-do-flagged
 
-    "m" 'mark-toggle
-    "*" 'mark-toggle-all
-    "M" 'mark-remove-all
-    "%" 'mark-regexp
-    "x" 'mark-do-flagged
+and optionally:
 
-- The main "mark" action is not a toggle.
-
-    "m" 'mark
-    "M" 'mark-all
-	"u" 'mark-remove
-    "U" 'mark-remove-all
-    "*" 'mark-toggle-all
-    "%" 'mark-regexp
-    "x" 'mark-do-flagged
-
-In both cases, if we use `*` then `#` is equally available.
+	"*" 'mark-all
+	"#" 'mark-remove
 
 #### Filtering
 

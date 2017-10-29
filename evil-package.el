@@ -35,8 +35,10 @@
   "U" 'package-menu-mark-upgrades
   "d" 'package-menu-mark-delete
 
-  ;; marking
+  ;; undo
   "u" 'package-menu-mark-unmark
+
+  ;; execute
   "x" 'package-menu-execute
 
   ;; "q" 'quit-window ; macros can make sense here.

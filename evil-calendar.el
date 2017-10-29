@@ -55,10 +55,8 @@
   (kbd "C-k") 'calendar-backward-month
   (kbd "C-j") 'calendar-forward-month
 
-  ;; marking
+  ;; visual
   "v" 'calendar-set-mark
-  "u" 'calendar-unmark
-  "x" 'calendar-mark-holidays
 
   ;; goto
   "." 'calendar-gototoday
@@ -71,6 +69,9 @@
   "d" 'diary-view-entries
   "m" 'diary-mark-entries
   "s" 'diary-show-all-entries
+
+  "u" 'calendar-unmark
+  "x" 'calendar-mark-holidays
 
   ;; show
   "gm" 'calendar-lunar-phases ; "gm" in evil-org-agenda. TODO: Shadows calendar-mayan.

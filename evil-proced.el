@@ -33,12 +33,12 @@
 (evil-define-key 'motion proced-mode-map
   (kbd "<return>") 'proced-refine
 
-  ;; marking
+  ;; mark
   ;; TODO: Implement a proced-toggle-mark?
   "m" 'proced-mark ; Mentioned in documentation, should be followed.
-  "M" 'proced-mark-all
-  "U" 'proced-unmark-all
-  "*" 'proced-toggle-marks
+  "*" 'proced-mark-all
+  "M" 'proced-unmark-all
+  "~" 'proced-toggle-marks
   "c" 'proced-mark-children
   "C" 'proced-mark-children ; Emacs has "C"
   "p" 'proced-mark-parents
