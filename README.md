@@ -158,7 +158,7 @@ If the mode makes no difference between the end of a section and the beginning
 of the next, use `[` and `]`.
 
 If there is granularity, i.e. subsections, use `C-j` and `C-k` to browse them.
-This reflects _evil-magit_ default bindings.
+This reflects _evil-magit_ and _evil-mu4e_ default bindings.
 
 If there is no paragraph structure, `{` and `}` can be used for sub-sectioning.
 If there is no sentence structure, `(` and `)` can be used for sub-sectioning.
@@ -201,7 +201,8 @@ In both cases, if we use `*` then `#` is equally available.
 
 `s` and `S` seem to be used in some places like mu4e.
 
-`~` is usually free and echoes AWK's regexp filtering.
+`~` is usually free and echoes AWK's regexp filtering.  It's not very accessible
+on QWERTY keyboards though.
 
 `=` is also free and its significance is obvious.
 
@@ -213,7 +214,10 @@ In both cases, if we use `*` then `#` is equally available.
 
 #### Interactive "goto"
 
-`gd`?
+- `gd`: go to definition:
+
+- `.`: go to current entity (day for calendar, playing track for EMMS).
+Only if more relevant than `evil-repeat`.
 
 #### Browse URL
 
