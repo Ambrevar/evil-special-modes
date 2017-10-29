@@ -52,7 +52,7 @@
   "]" 'term-next-prompt
   (kbd "C-k") 'term-previous-prompt
   (kbd "C-j") 'term-next-prompt
-  "0" 'term-bol
+  ;; "0" 'term-bol ; "0" is meant to really go at the beginning of line.
   "^" 'term-bol
   "$" 'term-show-maximum-output)
 
