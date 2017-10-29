@@ -40,7 +40,7 @@
   "x" 'package-menu-execute
 
   ;; "q" 'quit-window ; macros can make sense here.
-  "ZQ" 'quit-window
+  "ZQ" 'evil-quit
   "ZZ" 'quit-window)
 
 (provide 'evil-package)

@@ -51,7 +51,7 @@
 
   ;; quit
   "q" 'top-level
-  "ZQ" 'top-level
+  "ZQ" 'evil-quit
   "ZZ" 'top-level)
 
 (provide 'evil-debugger)

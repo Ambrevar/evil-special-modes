@@ -87,7 +87,7 @@
 
   ;; quit
   "q" 'calendar-exit
-  "ZQ" 'calendar-exit
+  "ZQ" 'evil-quit
   "ZZ" 'calendar-exit)
 
 

@@ -26,7 +26,6 @@
 ;;; Code:
 
 ;; TODO: Replace all scroll commands with evil commands?
-;; TODO: Replace all 'quit-window with 'evil-quit?
 
 ;;;###autoload
 (defun evil-special-modes-init ()

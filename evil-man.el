@@ -51,7 +51,7 @@
 
   ;; quit
   "q" 'Man-quit
-  "ZQ" 'Man-quit
+  "ZQ" 'evil-quit
   "ZZ" 'Man-quit)
 
 (provide 'evil-man)

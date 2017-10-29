@@ -58,7 +58,7 @@
 
   ;; quit
   "q" 'Info-exit
-  "ZQ" 'Info-exit
+  "ZQ" 'evil-quit
   "ZZ" 'Info-exit)
 
 (provide 'evil-info)

@@ -73,9 +73,8 @@
 
   ;; quit
   "q" 'quit-window ; TODO: Macro support?
-  "ZQ" 'quit-window
+  "ZQ" 'evil-quit
   "ZZ" 'quit-window)
-
 
 (provide 'evil-proced)
 ;;; evil-proced.el ends here

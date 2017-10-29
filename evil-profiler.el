@@ -59,7 +59,7 @@
 
   ;; quit
   "q" 'quit-window
-  "ZQ" 'quit-windw
+  "ZQ" 'evil-quit
   "ZZ" 'quit-windw)
 
 (provide 'evil-profiler)

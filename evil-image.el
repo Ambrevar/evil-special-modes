@@ -69,7 +69,7 @@
 
   ;; quit
   "q" 'quit-window
-  "ZQ" 'quit-window
+  "ZQ" 'evil-quit
   "ZZ" 'quit-window)
 
 ;; TODO: What if the user changes `evil-want-C-u-scroll' after this is run?

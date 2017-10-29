@@ -52,7 +52,7 @@
 
   ;; quit
   "q" 'Custom-buffer-done
-  "ZQ" 'Custom-buffer-done
+  "ZQ" 'evil-quit
   "ZZ" 'Custom-buffer-done)
 
 (provide 'evil-custom)
