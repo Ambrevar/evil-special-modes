@@ -138,17 +138,17 @@ remap `C-h`.
 ### The state of `q`
 
 In Vim, `q` is for recording macros.  In most Emacs special modes, it stands for
-quitting, which macros are recorded/played with `<f3>` and `<f4>`.
+quitting while macros are recorded/played with `<f3>` and `<f4>`.
 Vim quits with `ZZ` or `ZQ`.
 
-I think a good rule of thumb to follow would be:
+A good rule of thumb would be:
 
 - Always bind `ZZ` and `ZQ` to the quitting function(s), `evil-quit` if nothing
   else makes sense.
 
 - Bind `q` to `evil-quit` if macros don't make sense in current mode.
 
-- If macros don't make sense, then `@` is available.
+- If macros don't make sense in current mode, then `@` is available.
 
 ### Motion
 

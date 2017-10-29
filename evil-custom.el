@@ -48,7 +48,7 @@
   "^" 'Custom-goto-parent
   (kbd "C-o") 'Custom-goto-parent
   ;; TODO: Should the following be added?
-  ;; "<" 'Custom-goto-parent
+  "<" 'Custom-goto-parent
 
   ;; quit
   "q" 'Custom-buffer-done

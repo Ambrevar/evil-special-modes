@@ -62,7 +62,7 @@
 
   ;; goto
   "." 'calendar-gototoday
-  "gd" 'calendar-goto-date ; TODO: Ubiquitous key to "goto"? "gd" in evil-org-agenda, "gd" in Emacs.
+  "gd" 'calendar-goto-date ; "gd" in evil-org-agenda, "gd" in Emacs.
   ;; "gd" 'calendar-other-month ; Not very useful if we have `calendar-goto-date'.
 
 

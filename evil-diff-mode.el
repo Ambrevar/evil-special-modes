@@ -62,7 +62,7 @@
       (add-hook 'read-only-mode-hook 'evil-diff-read-only-state-switch nil t)
       (read-only-mode))))
 
-;;; TODO: Report this improvement upstream.
+;;; TODO: Report toggle function upstream?
 (defun evil-diff-toggle-context-unified (start end)
   "Toggle between context and unified views.
 
@@ -78,7 +78,7 @@ else cover the whole buffer."
     (when (= old-point-max (point-max))
       (diff-context->unified start end))))
 
-;;; TODO: Report this improvement upstream.
+;;; TODO: Report toggle function upstream?
 (defun evil-diff-toggle-restrict-view (&optional arg)
   "Toggle the restriction of the view to the current hunk.
 When restricting and if the prefix ARG is given, restrict the view to the

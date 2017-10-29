@@ -44,6 +44,8 @@
   "p" 'proced-mark-parents
   "P" 'proced-mark-parents ; Emacs has "P"
   (kbd "<delete>") 'proced-unmark-backward
+
+  ;; motion
   ;; TODO: Implement beginning-of-buffer / end-of-buffer.
   (kbd "SPC") 'evil-scroll-down
   (kbd "S-SPC") 'evil-scroll-up
@@ -52,12 +54,15 @@
 
   "u" 'proced-undo
 
-  "O" 'proced-omit-processes ; TODO: Work this binding out.
+  "O" 'proced-omit-processes ; TODO: Change default binding?
 
   "x" 'proced-send-signal ; Emacs has "k" and "x", "k" is mentioned in documentation
+
+  ;; filter
   "s" 'proced-filter-interactive ; Refers to "[s]elect", Emacs has "f" mentioned in documentation.
   "S" 'proced-format-interactive
 
+  ;; sort
   "oo" 'proced-sort-start ; Refers to "[o]order", Emacs has "s" mentioned in documentation.
   "oO" 'proced-sort-interactive
   "oc" 'proced-sort-pcpu
