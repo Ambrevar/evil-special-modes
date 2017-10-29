@@ -77,7 +77,7 @@
   "gs" 'calendar-sunrise-sunset ; "gs" in evil-org-agenda
   "gh" 'calendar-list-holidays ; "gh" in evil-org-agenda. TODO: Shadows calendar-hebrew.
   "gc" 'org-calendar-goto-agenda ; "gc" in evil-org-agenda. TODO: Shadows calendar-iso.
-  (kbd "M-h") 'calendar-cursor-holidays ; TODO: Binding?
+  (kbd "r") 'calendar-cursor-holidays
 
   ;; update
   "gr" 'calendar-redraw
