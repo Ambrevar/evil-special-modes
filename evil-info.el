@@ -42,16 +42,20 @@
   "f" 'evil-find-char
   "n" 'evil-search-next
   "?" 'evil-search-backward
-  ;; TODO: "[" and "]" are Emacs default for fine-grained browsing.
-  ;; We usually use "C-j"/"C-k" for that.
-  (kbd "C-j") 'Info-next
-  (kbd "C-k") 'Info-prev
+  (kbd "<tab>") 'Info-next-reference
+  (kbd "S-<tab>") 'Info-prev-reference
 
   ;; goto
   "gd" 'Info-goto-node
   "gt" 'Info-top-node
   "gT" 'Info-toc
   "gf" 'Info-follow-reference
+  (kbd "C-o") 'Info-history-back
+  (kbd "C-i") 'Info-history-forward
+  ;; TODO: "[" and "]" are Emacs default for fine-grained browsing.
+  ;; We usually use "C-j"/"C-k" for that.
+  (kbd "C-j") 'Info-next
+  (kbd "C-k") 'Info-prev
 
   (kbd "M-w") 'Info-copy-current-node-name ; TODO: Use yn?
   "p" nil
