@@ -1,27 +1,29 @@
 # Evil Special Modes
 
 This is a collection of [Evil](https://github.com/emacs-evil/evil) bindings for
-_the rest of Emacs_ the Evil mode does not cover by default, such as
-`help-mode`, `M-x calendar`, Eshell and more.
+_the rest of Emacs_ that Evil does not cover by default, such as `help-mode`,
+`M-x calendar`, Eshell and more.
 
 **Warning:** This project is still in an early development phase, expect some
-changes in the default binding in the future.
+changes in the default bindings in the future.
+
 
 
 ## Goals
 
-1. Reduce binding context switching: As soon as "moving around" gets hardwired
+1. Reduce context switching: As soon as "moving around" gets hardwired
 to `<hjkl>`, it becomes frustratingly inefficient not to have it everywhere.
 
-2. Consistency: Having all bindings in one place allows for enforcing
-consistency across special modes and coordinating the community work at defining
-a reference implementation.
+2. Community work: setting up bindings is tremendous work and joining force can
+only save hours for all of Evil users out there.  While not everyone may agree
+on the chosen bindings, it helps to have something to start with rather than
+nothing at all.  In the end, users are free to override a subset of the proposed
+bindings to best fit their needs.
 
-3. Community work: setting up bindings is tremendous work and joining force can
-only save hours for all of Evil users out there.  While not everyone would agree
-on the bindings, it helps to have something to start with rather than nothing at
-all.  In the end, users are free to tweak the package settings to fit their
-taste best.
+3. Consistency: Having all bindings defined in one place allows for enforcing
+consistency across special modes and coordinating the community work to define a
+reference implementation.
+
 
 
 ## Installation
@@ -45,6 +47,7 @@ or mode-by-mode, for instance
   (with-eval-after-load 'calendar (require 'evil-calendar))
 
 The list of supported modes is simply the list of files.
+
 
 
 ## Guidelines
@@ -114,28 +117,53 @@ current mode:
 	- `g` generally stands for "go" and is best used for movements.
 	- `z` is used for scrolling, folding, spell-checking and more.
 
-8. [WIP] Macro and action keys (Work-in-progress, see below)
+8. Macro and action keys (Work-in-progress, see below)
 
 	- `@`, `q`
 	- `.`
 
 
-## Work in progress
 
-### Should `C-h` ever be remapped?
+## Rationale (Work in progress)
 
-- In Vim, `C-h` works as backspace, but Evil does not follow that behaviour.
+Many special modes share the same set of similar actions.  Those actions should
+share the same bindings across all modes whenever feasible.
 
-- In Emacs, it is a prefix key for all help-related commands, and so is `<f1>`.
+### Motion (`[`, `]`, `{`, `}`, `(`, `)`, `C-j`, `C-k`)
 
-- `hjkl` can be used for atomic movements, `HJKL` can usually not be used
-because `H`, `K` and `L` are all universal (`J` is `evil-join` and usually does
-not make sense in special modes).  As such, the next best candidates are
-`C-<hjkl>` (`C-j` and `C-k` are already used by `evil-magit`) and `M-<hjkl>`.
-If we follow `evil-magit`, or if we need both `C-<hjkl>` and `M-<hjkl>`, we must
-remap `C-h`.
+- `[` and `]`: Use `[[` and `]]` for navigation between sections.
 
-### The state of `q`
+	If the mode makes no difference between the end of a section and the beginning
+of the next, use `[` and `]`.
+
+- `C-j`, `C-k`: If there is granularity, i.e. subsections, use `C-j` and `C-k`
+to browse them.  This reflects [evil-magit][] and [evil-mu4e][] default
+bindings.
+
+- `{`, `}`: If there is no paragraph structure, `{` and `}` can be used for sub-sectioning.
+
+- `(`, `)`: If there is no sentence structure, `(` and `)` can be used for sub-sectioning.
+
+
+- `HJKL`: `hjkl` can be used for atomic movements, but `HJKL` can usually not be used
+because `H`, `K` and `L` are all universal (`J` is `evil-join` and usually
+does not make sense in special modes).
+
+- `C-h`, `C-l`: Since we have `C-j` and `C-k` for vertical motion, it would
+make sense to use `C-h` and `C-l` for horizontal motion.  There are some
+shortcomings though:
+
+	- In Vim, `C-h` works as backspace, but Evil does not follow that behaviour.
+
+	- In Emacs, it is a prefix key for all help-related commands, and so is `<f1>`.
+
+- `M-<hjkl>`: Those keys are usually free in Evil but still bound to there Emacs
+default (e.g. `M-l` is `downcase-word`).  Besides, if `C-j`/`C-k` are
+already used, having `M-j` and `M-k` might add up to the confusion.
+
+**Question**: Should `C-h` ever be remapped?
+
+### Quitting (`q`, `ZQ`, `ZZ`)
 
 In Vim, `q` is for recording macros.  In most Emacs special modes, it stands for
 quitting while macros are recorded/played with `<f3>` and `<f4>`.
@@ -150,79 +178,100 @@ A good rule of thumb would be:
 
 - If macros don't make sense in current mode, then `@` is available.
 
-### Motion
+### Reverting (`gr`)
 
-Use `[[` and `]]` for navigation between sections.
+`gr` seems to be widely accepted.
 
-If the mode makes no difference between the end of a section and the beginning
-of the next, use `[` and `]`.
+### Marking
 
-If there is granularity, i.e. subsections, use `C-j` and `C-k` to browse them.
-This reflects _evil-magit_ and _evil-mu4e_ default bindings.
+Emacs inconsistently uses "u" and "U" to unmark.  Since in Vim those keys are
+usually bound to "undo", they are probably best left to commands that undo
+actions in the buffer and not undo marks.
 
-If there is no paragraph structure, `{` and `}` can be used for sub-sectioning.
-If there is no sentence structure, `(` and `)` can be used for sub-sectioning.
+`m` defaults to `evil-set-marker` which might not be very useful in special
+modes.  This is somewhat debatable though.
 
-### Ubiquitous bindings for ubiquitous actions
+Suggested mark bindings:
 
-Many special modes share the same set of similar actions.  Those actions should
-share the same bindings across all modes whenever feasible.
+- `m`: Mark or toggle mark, depending on what the mode offers.
 
-#### Reverting
+- `~`: Toggle all mark.  This mirrors the "invert-char" Vim command bound to `~`
+by default.
 
-- `gr` seems to be widely accepted.
+- `M`: Remove all marks.
 
-#### Marking
+- `%`: Mark regexp.
 
-There are two schools that change the use when the main "mark" action is applied
-to a sequence.
+- `x`: Execute action on marks.  This mirrors Dired's binding of `x`.
 
-	"m" 'mark-toggle or 'mark
-	"~" 'mark-toggle-all
-	"M" 'mark-remove-all
-	"%" 'mark-regexp
-	"x" 'mark-do-flagged
+**Question:** Since `'` is free, why not using it instead of `x` to execute
+actions on marks?
 
-and optionally:
+Optionally:
 
-	"*" 'mark-all
-	"#" 'mark-remove
+- `*`: Mark all, because `*` is traditionally a wild card.
 
-#### Filtering
+- `#`: Remove mark.  This is useful when we want to unmark a region having both
+marked and unmarked entries.  But `M` could also be made to remove all marks on
+region, making this binding useless.
 
-`s` and `S` seem to be used in some places like mu4e.
+### Filtering
 
-`~` is usually free and echoes AWK's regexp filtering.  It's not very accessible
-on QWERTY keyboards though.
+`s` and `S` seem to be used in some places like [mu4e][].
 
-`=` is also free and its significance is obvious.
+- `s`: [s]elect/filter candidates according to a pattern.
 
-`|` is not free but the pipe symbolic is very tentalizing.
+- `S`: Remove filter and select all.
 
-#### Sorting
+- `=` is also free and its significance is obvious.
 
-`o`?
+- `|` is not free but the pipe symbolic is very tantalizing.
 
-#### Interactive "goto"
+### Sorting
 
-- `gd`: go to definition:
+- `o`: Change the sort [o]rder.
+- `O`: Sort in reverse order.
 
-- `.`: go to current entity (day for calendar, playing track for EMMS).
-Only if more relevant than `evil-repeat`.
+package-menu uses `S`.
 
-#### Browse URL
+proced and Dired use `s`.
 
-`gu`?
+profiler uses `A` and `D`.
 
-#### Help
+[ranger][http://www.nongnu.org/ranger/] uses `o`.
+
+### Interactive "goto" (`gd` and `.`)
+
+- `gd`: [g]o to [d]efinition.
+
+- `.`: go to current entity (day for calendar, playing track for [EMMS][]).
+Bind only if more relevant than `evil-repeat`.
+
+### Browse URL (`gu`)
+
+`gu`: [d] to [U]RL.
+
+Normally bound to `evil-downcase` which makes little sense in most special
+modes.
+
+**Question:** Used anywhere?
+
+### Help (`?`)
 
 If searching makes sense, keep `?` for backward search.
 If not, it can be used to display help.
 
-### Modes left behind
+### History browsing (`C-n`, `C-p`)
+
+`C-n` and `C-p` are standard bindings to browse the history elements.
+
+
+
+## Modes left behind
 
 Some modes might still remain unsupported by this package.  Should you be
 missing your `<hjkl>`, feel free to file an issue or even a pull request.
+
 
 
 ## Third-party packages
@@ -231,9 +280,9 @@ To keep the goals of this package within reach, we restrict the changes brought
 by this package to vanilla Emacs modes.
 Third-party packages are provided by several parties:
 
-- [evil-ediff](https://github.com/emacs-evil/evil-ediff)
-- [evil-magit](https://github.com/emacs-evil/evil-magit)
-- [evil-mu4e](https://github.com/JorisE/evil-mu4e)
+- [evil-ediff][]
+- [evil-magit][]
+- [evil-mu4e][]
 - Org-mode: https://github.com/GuiltyDolphin/org-evil or https://github.com/Somelauw/evil-org-mode
 
 Should you know any suitable package not mentioned in this list, let us know and
@@ -243,3 +292,9 @@ Other references:
 
 - [Spacemacs](http://spacemacs.org)
 - [Doom Emacs](https://github.com/hlissner/doom-emacs)
+
+[EMMS]: https://www.gnu.org/software/emms/
+[evil-ediff]: https://github.com/emacs-evil/evil-ediff
+[evil-magit]: https://github.com/emacs-evil/evil-magit
+[evil-mu4e]: https://github.com/JorisE/evil-mu4e
+[mu4e]: https://www.djcbsoftware.nl/code/mu/mu4e.html
