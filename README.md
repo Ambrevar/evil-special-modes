@@ -44,11 +44,15 @@ reference implementation.
 
 or mode-by-mode, for instance
 
-  (with-eval-after-load 'calendar (require 'evil-calendar))
+	(with-eval-after-load 'calendar (require 'evil-calendar))
 
 The list of supported modes is simply the list of files.
 
+If you want to run on Evil in the minibuffer, you'll have to enable it
+manually.  This is so because many users find it confusing.
 
+	(require 'evil-minibuffer)
+	(evil-minibuffer-init)
 
 ## Guidelines
 

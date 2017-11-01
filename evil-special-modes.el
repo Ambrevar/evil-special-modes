@@ -29,7 +29,7 @@
 
 ;;;###autoload
 (defun evil-special-modes-init ()
-  "Register the Evil bindings for all supported modes.
+  "Register the Evil bindings for all supported modes except the minibuffer.
 
 Alternatively, you may register select bindings only with, for
 instance:
