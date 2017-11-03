@@ -64,7 +64,16 @@
   (evil-define-key 'insert eshell-mode-map
     ;; motion
     (kbd "M-h") 'eshell-backward-argument
-    (kbd "M-l") 'eshell-forward-argument))
+    (kbd "M-l") 'eshell-forward-argument)
+  (evil-define-key 'visual eshell-mode-map
+    ;; motion
+    ;; TODO: This does not work with `evil-visual-line'.
+    "[" 'eshell-previous-prompt
+    "]" 'eshell-next-prompt
+    (kbd "C-k") 'eshell-previous-prompt
+    (kbd "C-j") 'eshell-next-prompt
+    "0" 'eshell-bol
+    "^" 'eshell-bol))
 
 ;; TODO: Compare this setup procedure with evil-ediff.
 (add-hook 'eshell-first-time-mode-hook 'evil-eshell-set-keys)
