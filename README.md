@@ -31,16 +31,12 @@ reference implementation.
 - Clone or download this repository.
 - Modify your `load-path`:
 
-```
-(add-to-list 'load-path (expand-file-name "/path/to/evil-special-modes/" user-emacs-directory))
-```
+	(add-to-list 'load-path (expand-file-name "/path/to/evil-special-modes/" user-emacs-directory))
 
 - Register the bindings, either all at once:
 
-```
-(when (require 'evil-special-modes nil t)
-  (evil-special-modes-init))
-```
+	(when (require 'evil-special-modes nil t)
+	  (evil-special-modes-init))
 
 or mode-by-mode, for instance
 
@@ -208,8 +204,8 @@ by default.
 
 - `x`: Execute action on marks.  This mirrors Dired's binding of `x`.
 
-**Question:** Since `'` is free, why not using it instead of `x` to execute
-actions on marks?
+While `m` won't be available for setting marks (in the Vim sense), `'`can still be
+used as it can jump to other buffers.
 
 Optionally:
 
