@@ -28,58 +28,60 @@
 (require 'evil)
 (require 'proced)
 
-(evil-set-initial-state 'proced-mode 'motion)
+;;;###autoload
+(defun evil-proced-set-keys ()
+  (evil-set-initial-state 'proced-mode 'motion)
 
-(evil-define-key 'motion proced-mode-map
-  (kbd "<return>") 'proced-refine
+  (evil-define-key 'motion proced-mode-map
+    (kbd "<return>") 'proced-refine
 
-  ;; mark
-  ;; TODO: Implement a proced-toggle-mark?
-  "m" 'proced-mark ; Mentioned in documentation, should be followed.
-  "*" 'proced-mark-all
-  "M" 'proced-unmark-all
-  "~" 'proced-toggle-marks
-  "c" 'proced-mark-children
-  "C" 'proced-mark-children ; Emacs has "C"
-  "p" 'proced-mark-parents
-  "P" 'proced-mark-parents ; Emacs has "P"
-  (kbd "<delete>") 'proced-unmark-backward
+    ;; mark
+    ;; TODO: Implement a proced-toggle-mark?
+    "m" 'proced-mark ; Mentioned in documentation, should be followed.
+    "*" 'proced-mark-all
+    "M" 'proced-unmark-all
+    "~" 'proced-toggle-marks
+    "c" 'proced-mark-children
+    "C" 'proced-mark-children ; Emacs has "C"
+    "p" 'proced-mark-parents
+    "P" 'proced-mark-parents ; Emacs has "P"
+    (kbd "<delete>") 'proced-unmark-backward
 
-  ;; motion
-  ;; TODO: Implement beginning-of-buffer / end-of-buffer.
-  (kbd "SPC") 'evil-scroll-down
-  (kbd "S-SPC") 'evil-scroll-up
+    ;; motion
+    ;; TODO: Implement beginning-of-buffer / end-of-buffer.
+    (kbd "SPC") 'evil-scroll-down
+    (kbd "S-SPC") 'evil-scroll-up
 
-  "zt" 'proced-toggle-tree
+    "zt" 'proced-toggle-tree
 
-  "u" 'proced-undo
+    "u" 'proced-undo
 
-  "O" 'proced-omit-processes ; TODO: Change default binding?
+    "O" 'proced-omit-processes ; TODO: Change default binding?
 
-  "x" 'proced-send-signal ; Emacs has "k" and "x", "k" is mentioned in documentation
+    "x" 'proced-send-signal ; Emacs has "k" and "x", "k" is mentioned in documentation
 
-  ;; filter
-  "s" 'proced-filter-interactive ; Refers to "[s]elect", Emacs has "f" mentioned in documentation.
-  "S" 'proced-format-interactive
+    ;; filter
+    "s" 'proced-filter-interactive ; Refers to "[s]elect", Emacs has "f" mentioned in documentation.
+    "S" 'proced-format-interactive
 
-  ;; sort
-  "oo" 'proced-sort-start ; Refers to "[o]order", Emacs has "s" mentioned in documentation.
-  "oO" 'proced-sort-interactive
-  "oc" 'proced-sort-pcpu
-  "om" 'proced-sort-pmem
-  "op" 'proced-sort-pid
-  "ot" 'proced-sort-time
-  "ou" 'proced-sort-user
+    ;; sort
+    "oo" 'proced-sort-start ; Refers to "[o]order", Emacs has "s" mentioned in documentation.
+    "oO" 'proced-sort-interactive
+    "oc" 'proced-sort-pcpu
+    "om" 'proced-sort-pmem
+    "op" 'proced-sort-pid
+    "ot" 'proced-sort-time
+    "ou" 'proced-sort-user
 
-  "r" 'proced-renice
+    "r" 'proced-renice
 
-  ;; update
-  "gr" 'revert-buffer
+    ;; update
+    "gr" 'revert-buffer
 
-  ;; quit
-  "q" 'quit-window ; TODO: Macro support?
-  "ZQ" 'evil-quit
-  "ZZ" 'quit-window)
+    ;; quit
+    "q" 'quit-window ; TODO: Macro support?
+    "ZQ" 'evil-quit
+    "ZZ" 'quit-window))
 
 (provide 'evil-proced)
 ;;; evil-proced.el ends here

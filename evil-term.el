@@ -28,8 +28,6 @@
 (require 'evil)
 (require 'term)
 
-(evil-set-initial-state 'term-mode 'insert)
-
 ;;; TODO: Rebinding ESC has the drawback that programs like vi cannot use it anymore.
 ;;; Workaround: switch to Emacs mode and double-press ESC.
 ;;; Otherwise leave ESC to "C-c C-j".
@@ -39,22 +37,6 @@
   (interactive)
   (term-char-mode)
   (evil-insert-state))
-
-(evil-define-key 'normal term-mode-map
-  (kbd "C-c C-k") 'evil-term-char-mode-insert
-  (kbd "RET") 'term-send-input)
-
-(evil-define-key 'insert term-mode-map (kbd "C-c C-k") 'term-char-mode)
-
-(evil-define-key 'normal term-mode-map
-  ;; motion
-  "[" 'term-previous-prompt
-  "]" 'term-next-prompt
-  (kbd "C-k") 'term-previous-prompt
-  (kbd "C-j") 'term-next-prompt
-  ;; "0" 'term-bol ; "0" is meant to really go at the beginning of line.
-  "^" 'term-bol
-  "$" 'term-show-maximum-output)
 
 (defun evil-term-char-mode-entry-function ()
   (when (get-buffer-process (current-buffer))
@@ -67,10 +49,29 @@
       (when (>= (point) last-prompt)
         (term-char-mode)))))
 
-(defun evil-term-setup ()
+(defun evil-term-sync-state-and-mode ()
   (add-hook 'evil-insert-state-entry-hook 'evil-term-char-mode-entry-function)
   (add-hook 'evil-insert-state-exit-hook 'term-line-mode))
-(add-hook 'term-mode-hook 'evil-term-setup)
+
+;;;###autoload
+(defun evil-term-set-keys ()
+  (evil-set-initial-state 'term-mode 'insert)
+  (add-hook 'term-mode-hook 'evil-term-sync-state-and-mode)
+
+  (evil-define-key 'normal term-mode-map
+    (kbd "C-c C-k") 'evil-term-char-mode-insert
+    (kbd "RET") 'term-send-input
+
+    ;; motion
+    "[" 'term-previous-prompt
+    "]" 'term-next-prompt
+    (kbd "C-k") 'term-previous-prompt
+    (kbd "C-j") 'term-next-prompt
+    ;; "0" 'term-bol ; "0" is meant to really go at the beginning of line.
+    "^" 'term-bol
+    "$" 'term-show-maximum-output)
+
+  (evil-define-key 'insert term-mode-map (kbd "C-c C-k") 'term-char-mode))
 
 (provide 'evil-term)
 ;;; evil-term.el ends here

@@ -28,31 +28,33 @@
 (require 'evil)
 (require 'debug)
 
-(evil-set-initial-state 'debugger-mode 'motion)
+;;;###autoload
+(defun evil-debugger-set-keys ()
+  (evil-set-initial-state 'debugger-mode 'motion)
 
-(evil-define-key 'motion debugger-mode-map
-  ;; motion
-  (kbd "<tab>") 'forward-button
-  (kbd "S-<tab>") 'backward-button
-  (kbd "<return>") 'debug-help-follow
-  (kbd "SPC") 'next-line
+  (evil-define-key 'motion debugger-mode-map
+    ;; motion
+    (kbd "<tab>") 'forward-button
+    (kbd "S-<tab>") 'backward-button
+    (kbd "<return>") 'debug-help-follow
+    (kbd "SPC") 'next-line
 
-  "R" 'debugger-record-expression
-  "c" 'debugger-continue
-  "d" 'debugger-step-through
-  "x" 'debugger-eval-expression
-  "J" 'debugger-jump
+    "R" 'debugger-record-expression
+    "c" 'debugger-continue
+    "d" 'debugger-step-through
+    "x" 'debugger-eval-expression
+    "J" 'debugger-jump
 
-  "gl" 'debugger-list-functions
-  "gb" 'debugger-frame
-  "r" 'debugger-return-value
-  "u" 'debugger-frame-clear
-  "p" 'debugger-toggle-locals
+    "gl" 'debugger-list-functions
+    "gb" 'debugger-frame
+    "r" 'debugger-return-value
+    "u" 'debugger-frame-clear
+    "p" 'debugger-toggle-locals
 
-  ;; quit
-  "q" 'top-level
-  "ZQ" 'evil-quit
-  "ZZ" 'top-level)
+    ;; quit
+    "q" 'top-level
+    "ZQ" 'evil-quit
+    "ZZ" 'top-level))
 
 (provide 'evil-debugger)
 ;;; evil-debugger.el ends here

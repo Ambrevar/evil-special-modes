@@ -88,44 +88,46 @@ current file instead."
       (widen)
     (diff-restrict-view arg)))
 
-(evil-define-key 'normal diff-mode-map
-  ;; motion
-  (kbd "SPC") 'scroll-up-command
-  (kbd "S-SPC") 'scroll-down-command
-  (kbd "[") 'diff-file-prev
-  (kbd "]") 'diff-file-next
-  (kbd "C-j") 'diff-hunk-next
-  (kbd "C-k") 'diff-hunk-prev
+;;;###autoload
+(defun evil-diff-mode-set-keys ()
+  (evil-define-key 'normal diff-mode-map
+    ;; motion
+    (kbd "SPC") 'scroll-up-command
+    (kbd "S-SPC") 'scroll-down-command
+    (kbd "[") 'diff-file-prev
+    (kbd "]") 'diff-file-next
+    (kbd "C-j") 'diff-hunk-next
+    (kbd "C-k") 'diff-hunk-prev
 
-  "\\" 'read-only-mode) ; magit has "\"
+    "\\" 'read-only-mode) ; magit has "\"
 
-(evil-define-key 'motion diff-mode-map
-  ;; motion
-  (kbd "SPC") 'scroll-up-command
-  (kbd "S-SPC") 'scroll-down-command
-  (kbd "[") 'diff-file-prev
-  (kbd "]") 'diff-file-next
-  (kbd "C-j") 'diff-hunk-next
-  (kbd "C-k") 'diff-hunk-prev
+  (evil-define-key 'motion diff-mode-map
+    ;; motion
+    (kbd "SPC") 'scroll-up-command
+    (kbd "S-SPC") 'scroll-down-command
+    (kbd "[") 'diff-file-prev
+    (kbd "]") 'diff-file-next
+    (kbd "C-j") 'diff-hunk-next
+    (kbd "C-k") 'diff-hunk-prev
 
-  (kbd "<return>") 'diff-goto-source
-  "A" 'diff-add-change-log-entries-other-window
+    (kbd "<return>") 'diff-goto-source
+    "A" 'diff-add-change-log-entries-other-window
 
-  "a" 'diff-apply-hunk
-  "*" 'diff-refine-hunk
-  "D" 'diff-file-kill
-  "d" 'diff-hunk-kill
+    "a" 'diff-apply-hunk
+    "*" 'diff-refine-hunk
+    "D" 'diff-file-kill
+    "d" 'diff-hunk-kill
 
-  "ge" 'diff-ediff-patch
-  "i" 'next-error-follow-minor-mode
-  "o" 'evil-diff-toggle-restrict-view
-  "~" 'diff-reverse-direction
-  "s" 'diff-split-hunk
-  "c" 'diff-test-hunk
-  "x" 'evil-diff-toggle-context-unified
-  "#" 'diff-ignore-whitespace-hunk
+    "ge" 'diff-ediff-patch
+    "i" 'next-error-follow-minor-mode
+    "o" 'evil-diff-toggle-restrict-view
+    "~" 'diff-reverse-direction
+    "s" 'diff-split-hunk
+    "c" 'diff-test-hunk
+    "x" 'evil-diff-toggle-context-unified
+    "#" 'diff-ignore-whitespace-hunk
 
-  "\\" 'read-only-mode) ; magit has "\"
+    "\\" 'read-only-mode)) ; magit has "\"
 
 
 

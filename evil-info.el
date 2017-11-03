@@ -29,41 +29,43 @@
 (require 'evil)
 (require 'info)
 
-(evil-define-key 'motion Info-mode-map
-  ;; motion: Restore some Evil keys that got overriden.
-  "w" 'evil-forward-word-begin
-  "e" 'evil-forward-word-end
-  "ge" 'evil-backward-word-end
-  "gE" 'evil-backward-WORD-end
-  "b" 'evil-backward-word-begin
-  "gg" 'evil-goto-first-line
-  "t" 'evil-find-char-to
-  "T" 'evil-find-char-to-backward
-  "f" 'evil-find-char
-  "n" 'evil-search-next
-  "?" 'evil-search-backward
-  (kbd "<tab>") 'Info-next-reference
-  (kbd "S-<tab>") 'Info-prev-reference
+;;;###autoload
+(defun evil-info-set-keys ()
+  (evil-define-key 'motion Info-mode-map
+    ;; motion: Restore some Evil keys that got overriden.
+    "w" 'evil-forward-word-begin
+    "e" 'evil-forward-word-end
+    "ge" 'evil-backward-word-end
+    "gE" 'evil-backward-WORD-end
+    "b" 'evil-backward-word-begin
+    "gg" 'evil-goto-first-line
+    "t" 'evil-find-char-to
+    "T" 'evil-find-char-to-backward
+    "f" 'evil-find-char
+    "n" 'evil-search-next
+    "?" 'evil-search-backward
+    (kbd "<tab>") 'Info-next-reference
+    (kbd "S-<tab>") 'Info-prev-reference
 
-  ;; goto
-  "gd" 'Info-goto-node
-  "gt" 'Info-top-node
-  "gT" 'Info-toc
-  "gf" 'Info-follow-reference
-  (kbd "C-o") 'Info-history-back
-  (kbd "C-i") 'Info-history-forward
-  ;; TODO: "[" and "]" are Emacs default for fine-grained browsing.
-  ;; We usually use "C-j"/"C-k" for that.
-  (kbd "C-j") 'Info-next
-  (kbd "C-k") 'Info-prev
+    ;; goto
+    "gd" 'Info-goto-node
+    "gt" 'Info-top-node
+    "gT" 'Info-toc
+    "gf" 'Info-follow-reference
+    (kbd "C-o") 'Info-history-back
+    (kbd "C-i") 'Info-history-forward
+    ;; TODO: "[" and "]" are Emacs default for fine-grained browsing.
+    ;; We usually use "C-j"/"C-k" for that.
+    (kbd "C-j") 'Info-next
+    (kbd "C-k") 'Info-prev
 
-  (kbd "M-w") 'Info-copy-current-node-name ; TODO: Use yn?
-  "p" nil
+    (kbd "M-w") 'Info-copy-current-node-name ; TODO: Use yn?
+    "p" nil
 
-  ;; quit
-  "q" 'Info-exit
-  "ZQ" 'evil-quit
-  "ZZ" 'Info-exit)
+    ;; quit
+    "q" 'Info-exit
+    "ZQ" 'evil-quit
+    "ZZ" 'Info-exit))
 
 (provide 'evil-info)
 ;;; evil-info.el ends here

@@ -28,39 +28,41 @@
 (require 'evil)
 (require 'profiler)
 
-(evil-set-initial-state 'profiler-report-mode 'motion)
+;;;###autoload
+(defun evil-profiler-set-keys ()
+  (evil-set-initial-state 'profiler-report-mode 'motion)
 
-(evil-define-key 'motion profiler-report-mode-map
-  ;; motion
-  (kbd "SPC") 'scroll-up-command
-  (kbd "S-SPC") 'scroll-down-command
-  (kbd "<delete>") 'scroll-down-command
-  "j" 'profiler-report-next-entry
-  "k" 'profiler-report-previous-entry
+  (evil-define-key 'motion profiler-report-mode-map
+    ;; motion
+    (kbd "SPC") 'scroll-up-command
+    (kbd "S-SPC") 'scroll-down-command
+    (kbd "<delete>") 'scroll-down-command
+    "j" 'profiler-report-next-entry
+    "k" 'profiler-report-previous-entry
 
-  (kbd "<tab>") 'profiler-report-toggle-entry
-  (kbd "<return>") 'profiler-report-toggle-entry
-  "i" 'profiler-report-toggle-entry
+    (kbd "<tab>") 'profiler-report-toggle-entry
+    (kbd "<return>") 'profiler-report-toggle-entry
+    "i" 'profiler-report-toggle-entry
 
-  ;; sort
-  "o" 'profiler-report-ascending-sort
-  "O" 'profiler-report-descending-sort
+    ;; sort
+    "o" 'profiler-report-ascending-sort
+    "O" 'profiler-report-descending-sort
 
-  "c" 'profiler-report-render-calltree
-  "C" 'profiler-report-render-reversed-calltree
-  "i" 'profiler-report-describe-entry
-  "=" 'profiler-report-compare-profile
+    "c" 'profiler-report-render-calltree
+    "C" 'profiler-report-render-reversed-calltree
+    "i" 'profiler-report-describe-entry
+    "=" 'profiler-report-compare-profile
 
-  ;; goto
-  "gd" 'profiler-report-find-entry
+    ;; goto
+    "gd" 'profiler-report-find-entry
 
-  ;; update
-  "gr" 'revert-buffer
+    ;; update
+    "gr" 'revert-buffer
 
-  ;; quit
-  "q" 'quit-window
-  "ZQ" 'evil-quit
-  "ZZ" 'quit-windw)
+    ;; quit
+    "q" 'quit-window
+    "ZQ" 'evil-quit
+    "ZZ" 'quit-windw))
 
 (provide 'evil-profiler)
 ;;; evil-profiler.el ends here

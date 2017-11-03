@@ -28,54 +28,56 @@
 (require 'evil)
 (require 'image-mode)
 
-(evil-set-initial-state 'image-mode 'motion)
+;;;###autoload
+(defun evil-image-set-keys ()
+  (evil-set-initial-state 'image-mode 'motion)
 
-(evil-define-key 'motion image-mode-map
-  ;; motion
-  "gg" 'image-bob
-  "G" 'image-eob
-  "h" 'image-backward-hscroll
-  "l" 'image-forward-hscroll
-  "j" 'image-next-line
-  "k" 'image-previous-line
-  "0" 'image-bol
-  "^" 'image-bol
-  "$" 'image-eol
-  (kbd "C-d") 'image-scroll-down
-  (kbd "SPC") 'image-scroll-up
-  (kbd "S-SPC") 'image-scroll-down
-  (kbd "DEL") 'image-scroll-down
-
-  ;; animation
-  (kbd "<return>") 'image-toggle-animation
-  "a0" 'image-reset-speed
-  "ar" 'image-reverse-speed
-  "F" 'image-goto-frame
-  "," 'image-previous-frame ; mplayer/mpv style
-  "." 'image-next-frame ; mplayer/mpv style
-  ";" 'image-next-frame ; Evil style
-  "{" 'image-decrease-speed ; mplayer/mpv style
-  "}" 'image-increase-speed ; mplayer/mpv style
-
-  "H" 'image-transform-fit-to-height
-  "W" 'image-transform-fit-to-width
-
-  "[" 'image-previous-file
-  "]" 'image-next-file
-  (kbd "C-k") 'image-previous-file
-  (kbd "C-j") 'image-next-file
-
-  (kbd "C-c C-c") 'image-toggle-display
-
-  ;; quit
-  "q" 'quit-window
-  "ZQ" 'evil-quit
-  "ZZ" 'quit-window)
-
-;; TODO: What if the user changes `evil-want-C-u-scroll' after this is run?
-(when evil-want-C-u-scroll
   (evil-define-key 'motion image-mode-map
-    (kbd "C-u") 'image-scroll-up))
+    ;; motion
+    "gg" 'image-bob
+    "G" 'image-eob
+    "h" 'image-backward-hscroll
+    "l" 'image-forward-hscroll
+    "j" 'image-next-line
+    "k" 'image-previous-line
+    "0" 'image-bol
+    "^" 'image-bol
+    "$" 'image-eol
+    (kbd "C-d") 'image-scroll-down
+    (kbd "SPC") 'image-scroll-up
+    (kbd "S-SPC") 'image-scroll-down
+    (kbd "DEL") 'image-scroll-down
+
+    ;; animation
+    (kbd "<return>") 'image-toggle-animation
+    "a0" 'image-reset-speed
+    "ar" 'image-reverse-speed
+    "F" 'image-goto-frame
+    "," 'image-previous-frame ; mplayer/mpv style
+    "." 'image-next-frame ; mplayer/mpv style
+    ";" 'image-next-frame ; Evil style
+    "{" 'image-decrease-speed ; mplayer/mpv style
+    "}" 'image-increase-speed ; mplayer/mpv style
+
+    "H" 'image-transform-fit-to-height
+    "W" 'image-transform-fit-to-width
+
+    "[" 'image-previous-file
+    "]" 'image-next-file
+    (kbd "C-k") 'image-previous-file
+    (kbd "C-j") 'image-next-file
+
+    (kbd "C-c C-c") 'image-toggle-display
+
+    ;; quit
+    "q" 'quit-window
+    "ZQ" 'evil-quit
+    "ZZ" 'quit-window)
+
+  ;; TODO: What if the user changes `evil-want-C-u-scroll' after this is run?
+  (when evil-want-C-u-scroll
+    (evil-define-key 'motion image-mode-map
+      (kbd "C-u") 'image-scroll-up)))
 
 (provide 'evil-image)
 ;;; evil-image.el ends here

@@ -28,22 +28,24 @@
 (require 'evil)
 (require 'package)
 
-(evil-set-initial-state 'package-menu-mode 'motion)
+;;;###autoload
+(defun evil-package-set-keys ()
+  (evil-set-initial-state 'package-menu-mode 'motion)
 
-(evil-define-key 'motion package-menu-mode-map
-  "i" 'package-menu-mark-install
-  "U" 'package-menu-mark-upgrades
-  "d" 'package-menu-mark-delete
+  (evil-define-key 'motion package-menu-mode-map
+    "i" 'package-menu-mark-install
+    "U" 'package-menu-mark-upgrades
+    "d" 'package-menu-mark-delete
 
-  ;; undo
-  "u" 'package-menu-mark-unmark
+    ;; undo
+    "u" 'package-menu-mark-unmark
 
-  ;; execute
-  "x" 'package-menu-execute
+    ;; execute
+    "x" 'package-menu-execute
 
-  ;; "q" 'quit-window ; macros can make sense here.
-  "ZQ" 'evil-quit
-  "ZZ" 'quit-window)
+    ;; "q" 'quit-window ; macros can make sense here.
+    "ZQ" 'evil-quit
+    "ZZ" 'quit-window))
 
 (provide 'evil-package)
 ;;; evil-package.el ends here

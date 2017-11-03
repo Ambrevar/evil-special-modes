@@ -29,15 +29,17 @@
 (require 'evil)
 (require 'evil-man) ; WoMan's keymap inherits from Man.
 
-(evil-define-key 'motion Man-mode-map
-  (kbd "]") 'WoMan-next-manpage
-  (kbd "[") 'WoMan-previous-manpage
+;;;###autoload
+(defun evil-woman-set-keys ()
+  (evil-define-key 'motion woman-mode-map
+    (kbd "]") 'WoMan-next-manpage
+    (kbd "[") 'WoMan-previous-manpage
 
-  ;; goto
-  ;; "gm" 'woman
+    ;; goto
+    ;; "gm" 'woman
 
-  ;; update
-  "gr" 'woman-reformat-last-file)
+    ;; update
+    "gr" 'woman-reformat-last-file))
 
 (provide 'evil-woman)
 ;;; evil-woman.el ends here

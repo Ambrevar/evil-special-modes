@@ -28,31 +28,33 @@
 (require 'evil)
 (require 'man)
 
-(evil-define-key 'motion Man-mode-map
-  ;; motion
-  (kbd "SPC") 'scroll-up-command
-  (kbd "S-SPC") 'scroll-down-command
-  (kbd "<tab>") 'forward-button
-  (kbd "<backtab>") 'backward-button
+;;;###autoload
+(defun evil-man-set-keys ()
+  (evil-define-key 'motion Man-mode-map
+    ;; motion
+    (kbd "SPC") 'scroll-up-command
+    (kbd "S-SPC") 'scroll-down-command
+    (kbd "<tab>") 'forward-button
+    (kbd "<backtab>") 'backward-button
 
-  (kbd "]") 'Man-next-manpage
-  (kbd "[") 'Man-previous-manpage
-  (kbd "C-j") 'Man-next-section
-  (kbd "C-k") 'Man-previous-section
+    (kbd "]") 'Man-next-manpage
+    (kbd "[") 'Man-previous-manpage
+    (kbd "C-j") 'Man-next-section
+    (kbd "C-k") 'Man-previous-section
 
-  ;; goto
-  "gm" 'man
-  "gd" 'Man-goto-section
-  "gR" 'Man-follow-manual-reference
-  "gs" 'Man-goto-see-also-section
+    ;; goto
+    "gm" 'man
+    "gd" 'Man-goto-section
+    "gR" 'Man-follow-manual-reference
+    "gs" 'Man-goto-see-also-section
 
-  ;; update
-  "gr" 'Man-update-manpage
+    ;; update
+    "gr" 'Man-update-manpage
 
-  ;; quit
-  "q" 'Man-quit
-  "ZQ" 'evil-quit
-  "ZZ" 'Man-quit)
+    ;; quit
+    "q" 'Man-quit
+    "ZQ" 'evil-quit
+    "ZZ" 'Man-quit))
 
 (provide 'evil-man)
 ;;; evil-man.el ends here
