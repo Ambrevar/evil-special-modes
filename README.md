@@ -4,8 +4,8 @@ This is a collection of [Evil](https://github.com/emacs-evil/evil) bindings for
 _the rest of Emacs_ that Evil does not cover by default, such as `help-mode`,
 `M-x calendar`, Eshell and more.
 
-**Warning:** This project is still in an early development phase, expect some
-changes in the default bindings in the future.
+**Warning:** This project is still in an early development phase, expect
+the default bindings to change in the future.
 
 
 
@@ -29,6 +29,7 @@ reference implementation.
 ## Installation
 
 - Clone or download this repository.
+
 - Modify your `load-path`:
 
 	(add-to-list 'load-path (expand-file-name "/path/to/evil-special-modes/" user-emacs-directory))
@@ -38,17 +39,19 @@ reference implementation.
 	(when (require 'evil-special-modes nil t)
 	  (evil-special-modes-init))
 
-or mode-by-mode, for instance
+or mode-by-mode, for instance:
 
-	(with-eval-after-load 'calendar   (require 'evil-calendar) (evil-calendar-set-keys))
+	(with-eval-after-load 'calendar (require 'evil-calendar) (evil-calendar-set-keys))
 
 The list of supported modes is simply the list of files.
 
-If you want to run on Evil in the minibuffer, you'll have to enable it
-manually.  This is so because many users find it confusing.
+If you want to enable Evil in the minibuffer, you'll have to turn it on
+explicitly.  This is so because many users find it confusing.
 
 	(require 'evil-minibuffer)
 	(evil-minibuffer-init)
+
+
 
 ## Guidelines
 
@@ -117,7 +120,7 @@ current mode:
 	- `g` generally stands for "go" and is best used for movements.
 	- `z` is used for scrolling, folding, spell-checking and more.
 
-8. Macro and action keys (Work-in-progress, see below)
+8. Macro and action keys
 
 	- `@`, `q`
 	- `.`
@@ -144,7 +147,6 @@ bindings.
 
 - `(`, `)`: If there is no sentence structure, `(` and `)` can be used for sub-sectioning.
 
-
 - `HJKL`: `hjkl` can be used for atomic movements, but `HJKL` can usually not be used
 because `H`, `K` and `L` are all universal (`J` is `evil-join` and usually
 does not make sense in special modes).
@@ -157,7 +159,7 @@ shortcomings though:
 
 	- In Emacs, it is a prefix key for all help-related commands, and so is `<f1>`.
 
-- `M-<hjkl>`: Those keys are usually free in Evil but still bound to there Emacs
+- `M-<hjkl>`: Those keys are usually free in Evil but still bound to their Emacs
 default (e.g. `M-l` is `downcase-word`).  Besides, if `C-j`/`C-k` are
 already used, having `M-j` and `M-k` might add up to the confusion.
 
@@ -180,7 +182,8 @@ A good rule of thumb would be:
 
 ### Reverting (`gr`)
 
-`gr` seems to be widely accepted.
+`gr` is used for reverting in [evil-magit][], [evil-mu4e][], and some Spacemacs
+configurations (org-agenda and neotree among others).
 
 ### Marking
 
@@ -238,7 +241,7 @@ proced and Dired use `s`.
 
 profiler uses `A` and `D`.
 
-[ranger][http://www.nongnu.org/ranger/] uses `o`.
+[ranger](http://www.nongnu.org/ranger/) uses `o`.
 
 ### Interactive "goto" (`gd` and `.`)
 
@@ -247,14 +250,9 @@ profiler uses `A` and `D`.
 - `.`: go to current entity (day for calendar, playing track for [EMMS][]).
 Bind only if more relevant than `evil-repeat`.
 
-### Browse URL (`gu`)
+### Browse URL (`gx`)
 
-`gu`: [d] to [U]RL.
-
-Normally bound to `evil-downcase` which makes little sense in most special
-modes.
-
-**Question:** Used anywhere?
+`gx`: go to URL.  This is a default Vim binding.
 
 ### Help (`?`)
 
@@ -276,8 +274,9 @@ missing your `<hjkl>`, feel free to file an issue or even a pull request.
 
 ## Third-party packages
 
-To keep the goals of this package within reach, we restrict the changes brought
-by this package to vanilla Emacs modes.
+To keep the goals of this package within reach, we restrict the changes to
+vanilla Emacs modes.
+
 Third-party packages are provided by several parties:
 
 - [evil-ediff][]

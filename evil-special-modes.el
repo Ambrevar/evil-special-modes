@@ -29,7 +29,7 @@
 ;;
 ;; or mode-by-mode, for instance
 ;;
-;;      (with-eval-after-load 'calendar   (require 'evil-calendar) (evil-calendar-set-keys))
+;;      (with-eval-after-load 'calendar (require 'evil-calendar) (evil-calendar-set-keys))
 ;;
 ;; The list of supported modes is simply the list of files.
 ;;
