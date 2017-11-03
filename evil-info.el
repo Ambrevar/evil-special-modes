@@ -47,6 +47,8 @@
     (kbd "<tab>") 'Info-next-reference
     (kbd "S-<tab>") 'Info-prev-reference
 
+    ;; TODO: Should search with "n"/"N" cover the full manual like "C-s"/"C-r" does?
+
     ;; goto
     "gd" 'Info-goto-node
     "gt" 'Info-top-node
