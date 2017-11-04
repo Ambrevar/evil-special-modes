@@ -48,7 +48,7 @@
     ;; "zo" 'outline-hide-other
     "zB" 'outline-hide-body ; Hide all bodies, Emacs has "C-c C-t".
     "zb" 'outline-hide-entry ; Hide current body, Emacs has "C-c C-c".
-    "ze" outline-show-entry ; Show current body only, not subtree, reverse of outline-hide-entry, Emacs has "C-c C-e".
+    "ze" 'outline-show-entry ; Show current body only, not subtree, reverse of outline-hide-entry, Emacs has "C-c C-e".
     "zl" 'outline-hide-leaves ; Like `outline-hide-body' but for current subtree only, Emacs has "C-c C-l".
     "zK" 'outline-show-branches ; Show all children recursively but no body.  Emacs has "C-c C-k".
     "zk" 'outline-show-children ; Direct children only unlike `outline-show-branches', and no content unlike `outline-show-entry' and `outline-toggle-children'.  Emacs has "C-c TAB".
