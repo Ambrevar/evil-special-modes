@@ -30,9 +30,9 @@
 
 ;;;###autoload
 (defun evil-custom-set-keys ()
-  (evil-set-initial-state 'Custom-mode 'motion)
+  (evil-set-initial-state 'Custom-mode 'normal)
 
-  (evil-define-key 'motion custom-mode-map
+  (evil-define-key 'normal custom-mode-map
     ;; motion
     (kbd "<tab>") 'widget-forward
     (kbd "S-<tab>") 'widget-backward
