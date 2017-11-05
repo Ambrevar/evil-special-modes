@@ -303,7 +303,7 @@ file an issue.
 Other references:
 
 - [Spacemacs](http://spacemacs.org)
-- [Doom Emacs](https://github.com/hlissner/doom-emacs)
+- [Doom Emacs](https://github.com/hlissner/doom-emacs/blob/master/modules/private/hlissner/%2Bbindings.el)
 
 [EMMS]: https://www.gnu.org/software/emms/
 [evil-ediff]: https://github.com/emacs-evil/evil-ediff
