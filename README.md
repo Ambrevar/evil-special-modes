@@ -151,7 +151,7 @@ bindings.
 because `H`, `K` and `L` are all universal (`J` is `evil-join` and usually
 does not make sense in special modes).
 
-- `C-h`, `C-l`: Since we have `C-j` and `C-k` for vertical motion, it would
+- `C-h` should not be remapped: Since we have `C-j` and `C-k` for vertical motion, it would
 make sense to use `C-h` and `C-l` for horizontal motion.  There are some
 shortcomings though:
 
@@ -159,11 +159,14 @@ shortcomings though:
 
 	- In Emacs, it is a prefix key for all help-related commands, and so is `<f1>`.
 
+	- Most importantly, `C-h` is too widespread and ubiquitous to be replaced.
+      So we don't.
+
+- As a consequence of the former point, `C-l` is available.
+
 - `M-<hjkl>`: Those keys are usually free in Evil but still bound to their Emacs
 default (e.g. `M-l` is `downcase-word`).  Besides, if `C-j`/`C-k` are
 already used, having `M-j` and `M-k` might add up to the confusion.
-
-**Question**: Should `C-h` ever be remapped?
 
 ### Quitting (`q`, `ZQ`, `ZZ`)
 
@@ -180,10 +183,12 @@ A good rule of thumb would be:
 
 - If macros don't make sense in current mode, then `@` is available.
 
-### Reverting (`gr`)
+### Refreshing / Reverting (`gr`)
 
 `gr` is used for reverting in [evil-magit][], [evil-mu4e][], and some Spacemacs
 configurations (org-agenda and neotree among others).
+
+`C-l` is traditionally used to refresh the terminal screen.
 
 ### Marking
 
@@ -218,11 +223,11 @@ Optionally:
 marked and unmarked entries.  But `M` could also be made to remove all marks on
 region, making this binding useless.
 
-### Filtering
+### Filtering / Narrowing / Searching.
 
 `s` and `S` seem to be used in some places like [mu4e][].
 
-- `s`: [s]elect/filter candidates according to a pattern.
+- `s`: [s]elect/[s]earch/filter candidates according to a pattern.
 
 - `S`: Remove filter and select all.
 
@@ -241,14 +246,18 @@ proced and Dired use `s`.
 
 profiler uses `A` and `D`.
 
+mu4e uses `O`.
+
 [ranger](http://www.nongnu.org/ranger/) uses `o`.
 
-### Interactive "goto" (`gd` and `.`)
+### Jumping / Interactive "goto" (`gd` and `.`)
 
 - `gd`: [g]o to [d]efinition.
 
 - `.`: go to current entity (day for calendar, playing track for [EMMS][]).
 Bind only if more relevant than `evil-repeat`.
+
+mu4e has `j` in Emacs, `J` in Evil.
 
 ### Browse URL (`gx`)
 
@@ -262,6 +271,10 @@ If not, it can be used to display help.
 ### History browsing (`C-n`, `C-p`)
 
 `C-n` and `C-p` are standard bindings to browse the history elements.
+
+### Bookmarking
+
+?
 
 
 
