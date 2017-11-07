@@ -4,8 +4,8 @@ This is a collection of [Evil](https://github.com/emacs-evil/evil) bindings for
 _the rest of Emacs_ that Evil does not cover by default, such as `help-mode`,
 `M-x calendar`, Eshell and more.
 
-**Warning:** This project is still in an early development phase, expect
-the default bindings to change in the future.
+**Warning:** This repo isn't receiving updates anymore, please refer to:
+https://github.com/jojojames/evil-collection.
 
 
 
